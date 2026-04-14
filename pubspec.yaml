@@ -1,0 +1,60 @@
+name: lucioles
+description: "Atlas émotionnel personnel de ton quartier"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.10.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # Persistance des préférences (langue choisie)
+  shared_preferences: ^2.3.3
+
+  # ── Backend Supabase ────────────────────────────────────────────────────────
+  # Client Supabase : auth, database (realtime), storage
+  supabase_flutter: ^2.9.0
+  # Sign In with Google (flux natif iOS/Android)
+  google_sign_in: ^6.2.2
+
+  # Extension de chemin de fichier (utilisé pour l'upload Storage)
+  path: ^1.9.0
+
+  # Carte interactive avec tuiles OpenStreetMap
+  flutter_map: ^7.0.2
+  latlong2: ^0.9.1
+
+  # Géolocalisation GPS
+  geolocator: ^13.0.2
+
+  # Sélection de photos (upload vers Supabase Storage)
+  image_picker: ^1.1.2
+
+  # Gestion d'état simple via ChangeNotifier
+  provider: ^6.1.2
+
+  # Typographie Google Fonts (Playfair Display + Inter)
+  google_fonts: ^6.2.1
+
+  # Géocodage inverse : coordonnées → adresse lisible (natif iOS/Android, sans clé API)
+  geocoding: ^3.0.0
+
+  # Génération d'identifiants uniques
+  uuid: ^4.5.1
+
+  # Formatage des dates en français
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+  generate: true

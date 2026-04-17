@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../core/supabase_config.dart';
 import '../../core/theme.dart';
 import '../../core/ui_helpers.dart';
 import '../../l10n/app_localizations.dart';
@@ -146,28 +149,35 @@ class _AuthScreenState extends State<AuthScreen> {
                   const SizedBox(height: 36),
 
                   // ── Formulaire email + mot de passe ───────────────────
-                  _buildFormulaire(l10n, auth),
-                  const SizedBox(height: 16),
+                  if (SupabaseConfig.authEmailActif) ...[
+                    _buildFormulaire(l10n, auth),
+                    const SizedBox(height: 16),
+                    if (auth.erreur != null) _buildMessageErreur(auth.erreur!),
+                    const SizedBox(height: 20),
+                    _buildBoutonPrincipal(l10n, auth),
+                    const SizedBox(height: 28),
+                  ],
 
-                  // ── Message d'erreur global ───────────────────────────
-                  if (auth.erreur != null) _buildMessageErreur(auth.erreur!),
+                  // ── Message d'erreur hors formulaire (sociaux seuls) ──
+                  if (!SupabaseConfig.authEmailActif && auth.erreur != null) ...[
+                    _buildMessageErreur(auth.erreur!),
+                    const SizedBox(height: 16),
+                  ],
 
-                  const SizedBox(height: 20),
-
-                  // ── Bouton principal ──────────────────────────────────
-                  _buildBoutonPrincipal(l10n, auth),
-                  const SizedBox(height: 28),
-
-                  // ── Séparateur "ou" ───────────────────────────────────
-                  _buildSeparateurOu(l10n),
-                  const SizedBox(height: 20),
+                  // ── Séparateur "ou" — uniquement si email ET sociaux ──
+                  if (SupabaseConfig.authEmailActif &&
+                      (SupabaseConfig.authGoogleActif ||
+                          (SupabaseConfig.authAppleActif && Platform.isIOS))) ...[
+                    _buildSeparateurOu(l10n),
+                    const SizedBox(height: 20),
+                  ],
 
                   // ── Boutons sociaux ───────────────────────────────────
                   _buildBoutonsSociaux(l10n, auth),
                   const SizedBox(height: 32),
 
                   // ── Bascule mode connexion / inscription ──────────────
-                  _buildBasculeMode(l10n),
+                  if (SupabaseConfig.authEmailActif) _buildBasculeMode(l10n),
                 ],
               ),
             ),
@@ -180,28 +190,10 @@ class _AuthScreenState extends State<AuthScreen> {
   // ─── Widgets internes ─────────────────────────────────────────────────────
 
   Widget _buildLucioleDecoration() {
-    return Container(
-      width: 64,
-      height: 64,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppTheme.lucioleOr.withValues(alpha: 0.08),
-      ),
-      child: Center(
-        child: Text(
-          '✦',
-          style: TextStyle(
-            fontSize: 30,
-            color: AppTheme.lucioleOr,
-            shadows: [
-              Shadow(
-                color: AppTheme.lucioleOr.withValues(alpha: 0.6),
-                blurRadius: 20,
-              ),
-            ],
-          ),
-        ),
-      ),
+    return SvgPicture.asset(
+      'lib/assets/icons/lucioles_icon.svg',
+      width: 90,
+      height: 90,
     );
   }
 
@@ -331,16 +323,20 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   Widget _buildBoutonsSociaux(AppLocalizations l10n, AuthProvider auth) {
+    final showApple = SupabaseConfig.authAppleActif && Platform.isIOS;
+    if (!SupabaseConfig.authGoogleActif && !showApple) {
+      return const SizedBox.shrink();
+    }
     return Column(
       children: [
-        AuthSocialButton(
-          label: l10n.authContinuerGoogle,
-          icon: _GoogleIcon(),
-          onTap: auth.chargement ? null : () => auth.seConnecterGoogle(),
-        ),
-        // Sign in with Apple — affiché uniquement sur iOS, en attente de config
-        if (Platform.isIOS) ...[
-          const SizedBox(height: 10),
+        if (SupabaseConfig.authGoogleActif)
+          AuthSocialButton(
+            label: l10n.authContinuerGoogle,
+            icon: _GoogleIcon(),
+            onTap: auth.chargement ? null : () => auth.seConnecterGoogle(),
+          ),
+        if (showApple) ...[
+          if (SupabaseConfig.authGoogleActif) const SizedBox(height: 10),
           AuthSocialButton(
             label: l10n.authContinuerApple,
             icon: const Icon(Icons.apple_rounded, size: 20),

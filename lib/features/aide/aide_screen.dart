@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../core/theme.dart';
@@ -23,6 +24,18 @@ class AideScreen extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.only(bottom: 40),
         children: [
+          // ── Illustration ───────────────────────────────────────────────────
+          Padding(
+            padding: const EdgeInsets.only(top: 20, bottom: 4),
+            child: Center(
+              child: SvgPicture.asset(
+                'lib/assets/icons/lucioles_icon.svg',
+                width: 72,
+                height: 72,
+              ),
+            ),
+          ),
+
           // ── Bloc feedback ──────────────────────────────────────────────────
           _FeedbackCard(l10n: l10n),
 

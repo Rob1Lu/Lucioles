@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -140,7 +141,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
   List<_PageData> _pages(AppLocalizations l10n) => [
         _PageData(
           accentColor: AppTheme.lucioleOr,
-          icon: Icons.auto_awesome_rounded,
+          icon: null,
           titre: l10n.onboarding1Titre,
           corps: l10n.onboarding1Corps,
           decorations: const [
@@ -191,7 +192,7 @@ class _PageData {
   });
 
   final Color accentColor;
-  final IconData icon;
+  final IconData? icon;
   final String titre;
   final String corps;
   final List<_Deco> decorations;
@@ -334,23 +335,29 @@ class _Illustration extends StatelessWidget {
                     child: child,
                   );
                 },
-                child: Container(
-                  width: 96,
-                  height: 96,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: data.accentColor.withValues(alpha: 0.12),
-                    border: Border.all(
-                      color: data.accentColor.withValues(alpha: 0.25),
-                      width: 1.5,
-                    ),
-                  ),
-                  child: Icon(
-                    data.icon,
-                    size: 44,
-                    color: data.accentColor,
-                  ),
-                ),
+                child: data.icon == null
+                    ? SvgPicture.asset(
+                        'lib/assets/icons/lucioles_icon.svg',
+                        width: 120,
+                        height: 120,
+                      )
+                    : Container(
+                        width: 96,
+                        height: 96,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: data.accentColor.withValues(alpha: 0.12),
+                          border: Border.all(
+                            color: data.accentColor.withValues(alpha: 0.25),
+                            width: 1.5,
+                          ),
+                        ),
+                        child: Icon(
+                          data.icon,
+                          size: 44,
+                          color: data.accentColor,
+                        ),
+                      ),
               ),
             ),
 

@@ -5,13 +5,16 @@ import 'package:provider/provider.dart';
 
 import 'core/theme.dart';
 import 'features/carte/carte_screen.dart';
+import 'features/onboarding/onboarding_screen.dart';
 import 'features/profil/profil_screen.dart';
 import 'features/saisie/saisie_screen.dart';
 import 'l10n/app_localizations.dart';
 import 'shared/providers/locale_provider.dart';
 
 class LuciolesApp extends StatelessWidget {
-  const LuciolesApp({super.key});
+  const LuciolesApp({super.key, required this.onboardingDone});
+
+  final bool onboardingDone;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +34,48 @@ class LuciolesApp extends StatelessWidget {
             behavior: HitTestBehavior.opaque,
             child: child!,
           ),
-          home: const _MainNavigation(),
+          home: _HomeGate(onboardingDone: onboardingDone),
         );
       },
+    );
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+
+class _HomeGate extends StatefulWidget {
+  const _HomeGate({required this.onboardingDone});
+
+  final bool onboardingDone;
+
+  @override
+  State<_HomeGate> createState() => _HomeGateState();
+}
+
+class _HomeGateState extends State<_HomeGate> {
+  late bool _showApp;
+
+  @override
+  void initState() {
+    super.initState();
+    _showApp = widget.onboardingDone;
+  }
+
+  void _terminerOnboarding() {
+    setState(() => _showApp = true);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSwitcher(
+      duration: const Duration(milliseconds: 500),
+      switchInCurve: Curves.easeIn,
+      child: _showApp
+          ? const _MainNavigation()
+          : OnboardingScreen(
+              key: const ValueKey('onboarding'),
+              onDone: _terminerOnboarding,
+            ),
     );
   }
 }

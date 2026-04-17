@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../core/theme.dart';
 import '../../l10n/app_localizations.dart';
 import '../../shared/providers/admin_provider.dart';
+import 'admin_feedbacks_screen.dart';
 import 'admin_signalements_screen.dart';
 import 'admin_users_screen.dart';
 
@@ -58,6 +59,11 @@ class _AdminPortalScreenState extends State<AdminPortalScreen> {
                 label: l10n.adminPortalSignalements,
                 onTap: () => _ouvrirSignalements(context, admin),
               ),
+              _NavCard(
+                icon: Icons.chat_bubble_outline_rounded,
+                label: l10n.adminPortalFeedbacks,
+                onTap: () => _ouvrirFeedbacks(context, admin),
+              ),
 
               const SizedBox(height: 32),
             ],
@@ -72,6 +78,15 @@ class _AdminPortalScreenState extends State<AdminPortalScreen> {
       builder: (_) => ChangeNotifierProvider.value(
         value: admin,
         child: const AdminSignalementsScreen(),
+      ),
+    ));
+  }
+
+  void _ouvrirFeedbacks(BuildContext context, AdminProvider admin) {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (_) => ChangeNotifierProvider.value(
+        value: admin,
+        child: const AdminFeedbacksScreen(),
       ),
     ));
   }

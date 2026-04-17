@@ -13,8 +13,10 @@ import '../../l10n/app_localizations.dart';
 import '../../shared/providers/auth_provider.dart';
 import '../../shared/providers/entrees_provider.dart';
 import '../../shared/providers/admin_provider.dart';
+import '../feedback/feedback_bottom_sheet.dart';
 import '../../shared/providers/profile_provider.dart';
 import '../admin/admin_portal_screen.dart';
+import '../aide/aide_screen.dart';
 import 'parametres_compte_screen.dart';
 
 /// Écran Profil — troisième onglet.
@@ -183,6 +185,13 @@ class _ProfilScreenState extends State<ProfilScreen> {
                 backgroundColor: AppTheme.creme,
                 scrolledUnderElevation: 1,
                 shadowColor: AppTheme.sageClair.withValues(alpha: 0.3),
+                actions: [
+                  IconButton(
+                    icon: const Icon(Icons.rate_review_outlined),
+                    tooltip: l10n.feedbackBouton,
+                    onPressed: () => FeedbackBottomSheet.show(context),
+                  ),
+                ],
               ),
 
               // ── Section compte (connecté ou non) ──────────────────────────
@@ -208,6 +217,11 @@ class _ProfilScreenState extends State<ProfilScreen> {
                 SliverToBoxAdapter(
                   child: _BoutonAdmin(l10n: l10n),
                 ),
+
+              // ── Bouton aide (toujours visible) ────────────────────────────
+              SliverToBoxAdapter(
+                child: _BoutonAide(l10n: l10n),
+              ),
 
               // ── Stats ─────────────────────────────────────────────────────
               SliverToBoxAdapter(
@@ -543,6 +557,54 @@ class _BoutonAdmin extends StatelessWidget {
               ),
               Icon(Icons.chevron_right_rounded,
                   size: 20, color: AppTheme.sage.withValues(alpha: 0.6)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ─── Bouton aide ──────────────────────────────────────────────────────────────
+
+class _BoutonAide extends StatelessWidget {
+  const _BoutonAide({required this.l10n});
+
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(20, 4, 20, 4),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.6),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppTheme.cremeTres),
+      ),
+      child: InkWell(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const AideScreen()),
+        ),
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          child: Row(
+            children: [
+              Icon(Icons.help_outline_rounded,
+                  size: 18, color: AppTheme.texteSecondaire),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  l10n.aideAccesBouton,
+                  style: GoogleFonts.inter(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: AppTheme.textePrincipal,
+                  ),
+                ),
+              ),
+              Icon(Icons.chevron_right_rounded,
+                  size: 20, color: AppTheme.texteTertaire),
             ],
           ),
         ),

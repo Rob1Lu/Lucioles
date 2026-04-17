@@ -874,6 +874,72 @@ abstract class AppLocalizations {
   /// **'Profil utilisateur'**
   String get adminUserDetailTitle;
 
+  /// No description provided for @feedbackBouton.
+  ///
+  /// In fr, this message translates to:
+  /// **'Donner ton avis'**
+  String get feedbackBouton;
+
+  /// No description provided for @feedbackTitre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Partage ton avis'**
+  String get feedbackTitre;
+
+  /// No description provided for @feedbackTypeBug.
+  ///
+  /// In fr, this message translates to:
+  /// **'Bug'**
+  String get feedbackTypeBug;
+
+  /// No description provided for @feedbackTypeSuggestion.
+  ///
+  /// In fr, this message translates to:
+  /// **'Suggestion'**
+  String get feedbackTypeSuggestion;
+
+  /// No description provided for @feedbackTypeAutre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Autre'**
+  String get feedbackTypeAutre;
+
+  /// No description provided for @feedbackMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ton message'**
+  String get feedbackMessage;
+
+  /// No description provided for @feedbackMessageHint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Décris le problème ou ta suggestion…'**
+  String get feedbackMessageHint;
+
+  /// No description provided for @feedbackEnvoyer.
+  ///
+  /// In fr, this message translates to:
+  /// **'Envoyer'**
+  String get feedbackEnvoyer;
+
+  /// No description provided for @feedbackConfirmation.
+  ///
+  /// In fr, this message translates to:
+  /// **'Merci pour ton retour !'**
+  String get feedbackConfirmation;
+
+  /// No description provided for @feedbackErreur.
+  ///
+  /// In fr, this message translates to:
+  /// **'Une erreur est survenue.'**
+  String get feedbackErreur;
+
+  /// No description provided for @feedbackMessageVide.
+  ///
+  /// In fr, this message translates to:
+  /// **'Écris un message.'**
+  String get feedbackMessageVide;
+
   /// No description provided for @adminLucioleRestrictTitre.
   ///
   /// In fr, this message translates to:
@@ -957,6 +1023,210 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'{count, plural, =1{1 luciole signalée} other{{count} lucioles signalées}}'**
   String adminSignalementsLuciolesSig(int count);
+
+  /// No description provided for @aideAccesBouton.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aide'**
+  String get aideAccesBouton;
+
+  /// No description provided for @aideTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aide'**
+  String get aideTitle;
+
+  /// No description provided for @aideFeedbackTitre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Partage ton avis'**
+  String get aideFeedbackTitre;
+
+  /// No description provided for @aideFeedbackSousTitre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Une suggestion, un bug, une idée ? Dis-nous tout.'**
+  String get aideFeedbackSousTitre;
+
+  /// No description provided for @aideTutorielsSection.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tutoriels'**
+  String get aideTutorielsSection;
+
+  /// No description provided for @aideFAQSection.
+  ///
+  /// In fr, this message translates to:
+  /// **'Questions fréquentes'**
+  String get aideFAQSection;
+
+  /// No description provided for @aideTuto1Q.
+  ///
+  /// In fr, this message translates to:
+  /// **'Comment allumer une luciole ?'**
+  String get aideTuto1Q;
+
+  /// No description provided for @aideTuto1R.
+  ///
+  /// In fr, this message translates to:
+  /// **'Va dans l\'onglet « Saisie », note une chose positive que tu as observée dans ton quartier, puis appuie sur « Allumer une luciole ». Tu peux y ajouter un lieu et une photo.'**
+  String get aideTuto1R;
+
+  /// No description provided for @aideTuto2Q.
+  ///
+  /// In fr, this message translates to:
+  /// **'Comment ajouter un lieu à une entrée ?'**
+  String get aideTuto2Q;
+
+  /// No description provided for @aideTuto2R.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dans le formulaire de saisie, appuie sur le champ « Lieu ». Tu peux utiliser ta position GPS ou saisir un nom manuellement.'**
+  String get aideTuto2R;
+
+  /// No description provided for @aideTuto3Q.
+  ///
+  /// In fr, this message translates to:
+  /// **'Comment retrouver mes lucioles ?'**
+  String get aideTuto3Q;
+
+  /// No description provided for @aideTuto3R.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tes lucioles sont visibles dans l\'onglet « Carte » (sur la carte) et dans l\'onglet « Moi » (fil du temps). Seules les lucioles avec un lieu apparaissent sur la carte.'**
+  String get aideTuto3R;
+
+  /// No description provided for @aideTuto4Q.
+  ///
+  /// In fr, this message translates to:
+  /// **'Comment filtrer par saison ?'**
+  String get aideTuto4Q;
+
+  /// No description provided for @aideTuto4R.
+  ///
+  /// In fr, this message translates to:
+  /// **'Dans l\'onglet « Moi », utilise les filtres de saison (Printemps, Été, Automne, Hiver) juste au-dessus de ton fil du temps.'**
+  String get aideTuto4R;
+
+  /// No description provided for @aideFaq1Q.
+  ///
+  /// In fr, this message translates to:
+  /// **'Puis-je supprimer une luciole ?'**
+  String get aideFaq1Q;
+
+  /// No description provided for @aideFaq1R.
+  ///
+  /// In fr, this message translates to:
+  /// **'Oui. Dans ton fil du temps (onglet « Moi »), fais glisser une entrée vers la gauche pour voir le bouton de suppression. Cette action est irréversible.'**
+  String get aideFaq1R;
+
+  /// No description provided for @aideFaq2Q.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mes données sont-elles privées ?'**
+  String get aideFaq2Q;
+
+  /// No description provided for @aideFaq2R.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tes entrées avec un lieu peuvent apparaître sur la carte communautaire. Sans lieu, elles restent invisibles des autres. Tu peux aussi filtrer l\'affichage depuis la carte.'**
+  String get aideFaq2R;
+
+  /// No description provided for @aideFaq3Q.
+  ///
+  /// In fr, this message translates to:
+  /// **'Puis-je utiliser l\'app sans compte ?'**
+  String get aideFaq3Q;
+
+  /// No description provided for @aideFaq3R.
+  ///
+  /// In fr, this message translates to:
+  /// **'Tu peux explorer la carte communautaire sans compte. Pour allumer des lucioles et retrouver tes souvenirs, il te faudra créer un compte gratuit.'**
+  String get aideFaq3R;
+
+  /// No description provided for @aideFaq4Q.
+  ///
+  /// In fr, this message translates to:
+  /// **'Comment fonctionne la modération ?'**
+  String get aideFaq4Q;
+
+  /// No description provided for @aideFaq4R.
+  ///
+  /// In fr, this message translates to:
+  /// **'Lucioles repose sur la bienveillance. Tout contenu signalé est examiné par notre équipe. Les contenus inappropriés sont masqués pour préserver un espace positif et respectueux.'**
+  String get aideFaq4R;
+
+  /// No description provided for @onboardingPasser.
+  ///
+  /// In fr, this message translates to:
+  /// **'Passer'**
+  String get onboardingPasser;
+
+  /// No description provided for @onboardingSuivant.
+  ///
+  /// In fr, this message translates to:
+  /// **'Continuer'**
+  String get onboardingSuivant;
+
+  /// No description provided for @onboardingCommencer.
+  ///
+  /// In fr, this message translates to:
+  /// **'Allumer ma première luciole ✦'**
+  String get onboardingCommencer;
+
+  /// No description provided for @onboarding1Titre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Bienvenue dans les Lucioles'**
+  String get onboarding1Titre;
+
+  /// No description provided for @onboarding1Corps.
+  ///
+  /// In fr, this message translates to:
+  /// **'Chaque jour, une petite lumière. Note un moment positif que tu as vécu dans ton quartier — aussi discret soit-il.'**
+  String get onboarding1Corps;
+
+  /// No description provided for @onboarding2Titre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ton atlas de bons souvenirs'**
+  String get onboarding2Titre;
+
+  /// No description provided for @onboarding2Corps.
+  ///
+  /// In fr, this message translates to:
+  /// **'Localise tes observations et construis ta propre carte. Un atlas intime des endroits qui t\'ont touché.'**
+  String get onboarding2Corps;
+
+  /// No description provided for @onboarding3Titre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Un espace doux et sécurisé'**
+  String get onboarding3Titre;
+
+  /// No description provided for @onboarding3Corps.
+  ///
+  /// In fr, this message translates to:
+  /// **'Lucioles repose sur la bienveillance. Chaque contenu est modéré pour que cet espace reste positif et respectueux pour tous.'**
+  String get onboarding3Corps;
+
+  /// No description provided for @adminPortalFeedbacks.
+  ///
+  /// In fr, this message translates to:
+  /// **'Feedbacks utilisateurs'**
+  String get adminPortalFeedbacks;
+
+  /// No description provided for @adminFeedbacksTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Feedbacks'**
+  String get adminFeedbacksTitle;
+
+  /// No description provided for @adminFeedbacksVide.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun feedback pour l\'instant.'**
+  String get adminFeedbacksVide;
 
   /// No description provided for @signalementSignaler.
   ///

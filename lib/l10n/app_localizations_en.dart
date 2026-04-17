@@ -430,6 +430,39 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adminUserDetailTitle => 'User profile';
 
   @override
+  String get feedbackBouton => 'Give feedback';
+
+  @override
+  String get feedbackTitre => 'Share your feedback';
+
+  @override
+  String get feedbackTypeBug => 'Bug';
+
+  @override
+  String get feedbackTypeSuggestion => 'Suggestion';
+
+  @override
+  String get feedbackTypeAutre => 'Other';
+
+  @override
+  String get feedbackMessage => 'Your message';
+
+  @override
+  String get feedbackMessageHint => 'Describe the issue or your suggestion…';
+
+  @override
+  String get feedbackEnvoyer => 'Send';
+
+  @override
+  String get feedbackConfirmation => 'Thanks for your feedback!';
+
+  @override
+  String get feedbackErreur => 'An error occurred.';
+
+  @override
+  String get feedbackMessageVide => 'Please write a message.';
+
+  @override
   String get adminLucioleRestrictTitre => 'Restrict this firefly?';
 
   @override
@@ -488,6 +521,120 @@ class AppLocalizationsEn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get aideAccesBouton => 'Help';
+
+  @override
+  String get aideTitle => 'Help';
+
+  @override
+  String get aideFeedbackTitre => 'Share your feedback';
+
+  @override
+  String get aideFeedbackSousTitre =>
+      'A suggestion, a bug, an idea? Tell us everything.';
+
+  @override
+  String get aideTutorielsSection => 'Tutorials';
+
+  @override
+  String get aideFAQSection => 'Frequently asked questions';
+
+  @override
+  String get aideTuto1Q => 'How do I light a firefly?';
+
+  @override
+  String get aideTuto1R =>
+      'Go to the \"Write\" tab, note a positive thing you observed in your neighbourhood, then tap \"Light a firefly\". You can add a location and a photo.';
+
+  @override
+  String get aideTuto2Q => 'How do I add a location to an entry?';
+
+  @override
+  String get aideTuto2R =>
+      'In the entry form, tap the \"Location\" field. You can use your GPS position or type a name manually.';
+
+  @override
+  String get aideTuto3Q => 'How do I find my fireflies again?';
+
+  @override
+  String get aideTuto3R =>
+      'Your fireflies appear in the \"Map\" tab (on the map) and in the \"Me\" tab (timeline). Only fireflies with a location show on the map.';
+
+  @override
+  String get aideTuto4Q => 'How do I filter by season?';
+
+  @override
+  String get aideTuto4R =>
+      'In the \"Me\" tab, use the season filters (Spring, Summer, Autumn, Winter) just above your timeline.';
+
+  @override
+  String get aideFaq1Q => 'Can I delete a firefly?';
+
+  @override
+  String get aideFaq1R =>
+      'Yes. In your timeline (\"Me\" tab), swipe an entry to the left to reveal the delete button. This action is irreversible.';
+
+  @override
+  String get aideFaq2Q => 'Is my data private?';
+
+  @override
+  String get aideFaq2R =>
+      'Entries with a location may appear on the community map. Without a location, they remain invisible to others. You can also filter the display from the map.';
+
+  @override
+  String get aideFaq3Q => 'Can I use the app without an account?';
+
+  @override
+  String get aideFaq3R =>
+      'You can explore the community map without an account. To light fireflies and retrieve your memories, you will need to create a free account.';
+
+  @override
+  String get aideFaq4Q => 'How does moderation work?';
+
+  @override
+  String get aideFaq4R =>
+      'Lucioles is built on kindness. Any reported content is reviewed by our team. Inappropriate content is hidden to preserve a positive and respectful space.';
+
+  @override
+  String get onboardingPasser => 'Skip';
+
+  @override
+  String get onboardingSuivant => 'Continue';
+
+  @override
+  String get onboardingCommencer => 'Light my first firefly ✦';
+
+  @override
+  String get onboarding1Titre => 'Welcome to Lucioles';
+
+  @override
+  String get onboarding1Corps =>
+      'Every day, a little light. Note a positive moment you experienced in your neighbourhood — however small.';
+
+  @override
+  String get onboarding2Titre => 'Your atlas of good memories';
+
+  @override
+  String get onboarding2Corps =>
+      'Pin your observations on a map and build your own personal atlas of the places that touched you.';
+
+  @override
+  String get onboarding3Titre => 'A safe and kind space';
+
+  @override
+  String get onboarding3Corps =>
+      'Lucioles is built on kindness. Every piece of content is moderated to keep this space positive and respectful for everyone.';
+
+  @override
+  String get adminPortalFeedbacks => 'User feedbacks';
+
+  @override
+  String get adminFeedbacksTitle => 'Feedbacks';
+
+  @override
+  String get adminFeedbacksVide => 'No feedbacks yet.';
 
   @override
   String get signalementSignaler => 'Report';

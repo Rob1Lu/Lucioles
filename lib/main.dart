@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'app.dart';
@@ -36,6 +37,9 @@ Future<void> main() async {
   final localeProvider = LocaleProvider();
   await localeProvider.charger();
 
+  final prefs = await SharedPreferences.getInstance();
+  final onboardingDone = prefs.getBool('onboarding_done') ?? false;
+
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -62,7 +66,7 @@ Future<void> main() async {
         // Profil — pseudo et avatar, auto-chargés à la connexion
         ChangeNotifierProvider(create: (_) => ProfileProvider()),
       ],
-      child: const LuciolesApp(),
+      child: LuciolesApp(onboardingDone: onboardingDone),
     ),
   );
 }

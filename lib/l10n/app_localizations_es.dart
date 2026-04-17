@@ -433,6 +433,39 @@ class AppLocalizationsEs extends AppLocalizations {
   String get adminUserDetailTitle => 'Perfil de usuario';
 
   @override
+  String get feedbackBouton => 'Dar opinión';
+
+  @override
+  String get feedbackTitre => 'Comparte tu opinión';
+
+  @override
+  String get feedbackTypeBug => 'Error';
+
+  @override
+  String get feedbackTypeSuggestion => 'Sugerencia';
+
+  @override
+  String get feedbackTypeAutre => 'Otro';
+
+  @override
+  String get feedbackMessage => 'Tu mensaje';
+
+  @override
+  String get feedbackMessageHint => 'Describe el problema o tu sugerencia…';
+
+  @override
+  String get feedbackEnvoyer => 'Enviar';
+
+  @override
+  String get feedbackConfirmation => '¡Gracias por tu opinión!';
+
+  @override
+  String get feedbackErreur => 'Se produjo un error.';
+
+  @override
+  String get feedbackMessageVide => 'Por favor, escribe un mensaje.';
+
+  @override
   String get adminLucioleRestrictTitre => '¿Restringir esta luciérnaga?';
 
   @override
@@ -491,6 +524,120 @@ class AppLocalizationsEs extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get aideAccesBouton => 'Ayuda';
+
+  @override
+  String get aideTitle => 'Ayuda';
+
+  @override
+  String get aideFeedbackTitre => 'Comparte tu opinión';
+
+  @override
+  String get aideFeedbackSousTitre =>
+      '¿Una sugerencia, un error, una idea? Cuéntanos todo.';
+
+  @override
+  String get aideTutorielsSection => 'Tutoriales';
+
+  @override
+  String get aideFAQSection => 'Preguntas frecuentes';
+
+  @override
+  String get aideTuto1Q => '¿Cómo encender una luciérnaga?';
+
+  @override
+  String get aideTuto1R =>
+      'Ve a la pestaña «Escribir», anota algo positivo que hayas observado en tu barrio y pulsa «Encender una luciérnaga». Puedes añadir un lugar y una foto.';
+
+  @override
+  String get aideTuto2Q => '¿Cómo añadir un lugar a una entrada?';
+
+  @override
+  String get aideTuto2R =>
+      'En el formulario de entrada, pulsa el campo «Lugar». Puedes usar tu posición GPS o escribir un nombre manualmente.';
+
+  @override
+  String get aideTuto3Q => '¿Cómo encontrar mis luciérnagas?';
+
+  @override
+  String get aideTuto3R =>
+      'Tus luciérnagas aparecen en la pestaña «Mapa» (en el mapa) y en la pestaña «Yo» (cronología). Solo las luciérnagas con un lugar aparecen en el mapa.';
+
+  @override
+  String get aideTuto4Q => '¿Cómo filtrar por estación?';
+
+  @override
+  String get aideTuto4R =>
+      'En la pestaña «Yo», usa los filtros de estación (Primavera, Verano, Otoño, Invierno) justo encima de tu cronología.';
+
+  @override
+  String get aideFaq1Q => '¿Puedo eliminar una luciérnaga?';
+
+  @override
+  String get aideFaq1R =>
+      'Sí. En tu cronología (pestaña «Yo»), desliza una entrada hacia la izquierda para ver el botón de eliminación. Esta acción es irreversible.';
+
+  @override
+  String get aideFaq2Q => '¿Son privados mis datos?';
+
+  @override
+  String get aideFaq2R =>
+      'Las entradas con un lugar pueden aparecer en el mapa comunitario. Sin lugar, permanecen invisibles para los demás. También puedes filtrar la visualización desde el mapa.';
+
+  @override
+  String get aideFaq3Q => '¿Puedo usar la app sin cuenta?';
+
+  @override
+  String get aideFaq3R =>
+      'Puedes explorar el mapa comunitario sin cuenta. Para encender luciérnagas y recuperar tus recuerdos, necesitarás crear una cuenta gratuita.';
+
+  @override
+  String get aideFaq4Q => '¿Cómo funciona la moderación?';
+
+  @override
+  String get aideFaq4R =>
+      'Lucioles se basa en la amabilidad. Todo contenido reportado es revisado por nuestro equipo. El contenido inapropiado se oculta para preservar un espacio positivo y respetuoso.';
+
+  @override
+  String get onboardingPasser => 'Omitir';
+
+  @override
+  String get onboardingSuivant => 'Continuar';
+
+  @override
+  String get onboardingCommencer => 'Encender mi primera luciérnaga ✦';
+
+  @override
+  String get onboarding1Titre => 'Bienvenido a Lucioles';
+
+  @override
+  String get onboarding1Corps =>
+      'Cada día, una pequeña luz. Anota un momento positivo que hayas vivido en tu barrio — por pequeño que sea.';
+
+  @override
+  String get onboarding2Titre => 'Tu atlas de buenos recuerdos';
+
+  @override
+  String get onboarding2Corps =>
+      'Localiza tus observaciones y construye tu propio mapa personal. Un atlas íntimo de los lugares que te han tocado.';
+
+  @override
+  String get onboarding3Titre => 'Un espacio tranquilo y seguro';
+
+  @override
+  String get onboarding3Corps =>
+      'Lucioles se basa en la amabilidad. Cada contenido es moderado para que este espacio siga siendo positivo y respetuoso para todos.';
+
+  @override
+  String get adminPortalFeedbacks => 'Opiniones de usuarios';
+
+  @override
+  String get adminFeedbacksTitle => 'Opiniones';
+
+  @override
+  String get adminFeedbacksVide => 'Aún no hay opiniones.';
 
   @override
   String get signalementSignaler => 'Reportar';

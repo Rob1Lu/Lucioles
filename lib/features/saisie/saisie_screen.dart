@@ -18,6 +18,7 @@ import '../../features/auth/auth_screen.dart';
 import '../../l10n/app_localizations.dart';
 import '../../shared/providers/auth_provider.dart';
 import '../../shared/providers/entrees_provider.dart';
+import '../feedback/feedback_bottom_sheet.dart';
 import 'widgets/champ_lieu_widget.dart';
 
 /// Écran de saisie quotidienne.
@@ -194,7 +195,16 @@ class _SaisieScreenState extends State<SaisieScreen> {
 
     return Scaffold(
       backgroundColor: AppTheme.creme,
-      appBar: AppBar(title: Text(l10n.saisieAppBarTitle)),
+      appBar: AppBar(
+        title: Text(l10n.saisieAppBarTitle),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.rate_review_outlined),
+            tooltip: l10n.feedbackBouton,
+            onPressed: () => FeedbackBottomSheet.show(context),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(32, 40, 32, 40),
         child: Column(
@@ -274,7 +284,16 @@ class _SaisieScreenState extends State<SaisieScreen> {
 
     return Scaffold(
       backgroundColor: AppTheme.creme,
-      appBar: AppBar(title: Text(l10n.saisieAppBarTitle)),
+      appBar: AppBar(
+        title: Text(l10n.saisieAppBarTitle),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.rate_review_outlined),
+            tooltip: l10n.feedbackBouton,
+            onPressed: () => FeedbackBottomSheet.show(context),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(28),
         child: Column(
@@ -404,7 +423,16 @@ class _SaisieScreenState extends State<SaisieScreen> {
 
     return Scaffold(
       backgroundColor: AppTheme.creme,
-      appBar: AppBar(title: Text(l10n.saisieAppBarTitle)),
+      appBar: AppBar(
+        title: Text(l10n.saisieAppBarTitle),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.rate_review_outlined),
+            tooltip: l10n.feedbackBouton,
+            onPressed: () => FeedbackBottomSheet.show(context),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(24, 16, 24, 40),
         child: Form(

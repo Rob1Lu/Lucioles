@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import '../../data/models/admin_feedback.dart';
 import '../../data/models/admin_user.dart';
 import '../../data/models/entree.dart';
 import '../../data/models/signalement_item.dart';
@@ -20,17 +21,21 @@ class AdminProvider extends ChangeNotifier {
   AdminStats? _stats;
   List<AdminUser> _utilisateurs = [];
   List<SignalementItem> _signalements = [];
+  List<AdminFeedback> _feedbacks = [];
   bool _chargementStats = false;
   bool _chargementUtilisateurs = false;
   bool _chargementSignalements = false;
+  bool _chargementFeedbacks = false;
   String? _erreur;
 
   AdminStats? get stats => _stats;
   List<AdminUser> get utilisateurs => _utilisateurs;
   List<SignalementItem> get signalements => _signalements;
+  List<AdminFeedback> get feedbacks => _feedbacks;
   bool get chargementStats => _chargementStats;
   bool get chargementUtilisateurs => _chargementUtilisateurs;
   bool get chargementSignalements => _chargementSignalements;
+  bool get chargementFeedbacks => _chargementFeedbacks;
   String? get erreur => _erreur;
 
   List<AdminUser> filtrer(String query) {
@@ -109,6 +114,20 @@ class AdminProvider extends ChangeNotifier {
       notifyListeners();
     } catch (e) {
       _erreur = e.toString();
+      notifyListeners();
+    }
+  }
+
+  Future<void> chargerFeedbacks() async {
+    _chargementFeedbacks = true;
+    _erreur = null;
+    notifyListeners();
+    try {
+      _feedbacks = await _datasource.getFeedbacks();
+    } catch (e) {
+      _erreur = e.toString();
+    } finally {
+      _chargementFeedbacks = false;
       notifyListeners();
     }
   }

@@ -433,6 +433,39 @@ class AppLocalizationsFr extends AppLocalizations {
   String get adminUserDetailTitle => 'Profil utilisateur';
 
   @override
+  String get feedbackBouton => 'Donner ton avis';
+
+  @override
+  String get feedbackTitre => 'Partage ton avis';
+
+  @override
+  String get feedbackTypeBug => 'Bug';
+
+  @override
+  String get feedbackTypeSuggestion => 'Suggestion';
+
+  @override
+  String get feedbackTypeAutre => 'Autre';
+
+  @override
+  String get feedbackMessage => 'Ton message';
+
+  @override
+  String get feedbackMessageHint => 'Décris le problème ou ta suggestion…';
+
+  @override
+  String get feedbackEnvoyer => 'Envoyer';
+
+  @override
+  String get feedbackConfirmation => 'Merci pour ton retour !';
+
+  @override
+  String get feedbackErreur => 'Une erreur est survenue.';
+
+  @override
+  String get feedbackMessageVide => 'Écris un message.';
+
+  @override
   String get adminLucioleRestrictTitre => 'Restreindre cette luciole ?';
 
   @override
@@ -491,6 +524,120 @@ class AppLocalizationsFr extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get aideAccesBouton => 'Aide';
+
+  @override
+  String get aideTitle => 'Aide';
+
+  @override
+  String get aideFeedbackTitre => 'Partage ton avis';
+
+  @override
+  String get aideFeedbackSousTitre =>
+      'Une suggestion, un bug, une idée ? Dis-nous tout.';
+
+  @override
+  String get aideTutorielsSection => 'Tutoriels';
+
+  @override
+  String get aideFAQSection => 'Questions fréquentes';
+
+  @override
+  String get aideTuto1Q => 'Comment allumer une luciole ?';
+
+  @override
+  String get aideTuto1R =>
+      'Va dans l\'onglet « Saisie », note une chose positive que tu as observée dans ton quartier, puis appuie sur « Allumer une luciole ». Tu peux y ajouter un lieu et une photo.';
+
+  @override
+  String get aideTuto2Q => 'Comment ajouter un lieu à une entrée ?';
+
+  @override
+  String get aideTuto2R =>
+      'Dans le formulaire de saisie, appuie sur le champ « Lieu ». Tu peux utiliser ta position GPS ou saisir un nom manuellement.';
+
+  @override
+  String get aideTuto3Q => 'Comment retrouver mes lucioles ?';
+
+  @override
+  String get aideTuto3R =>
+      'Tes lucioles sont visibles dans l\'onglet « Carte » (sur la carte) et dans l\'onglet « Moi » (fil du temps). Seules les lucioles avec un lieu apparaissent sur la carte.';
+
+  @override
+  String get aideTuto4Q => 'Comment filtrer par saison ?';
+
+  @override
+  String get aideTuto4R =>
+      'Dans l\'onglet « Moi », utilise les filtres de saison (Printemps, Été, Automne, Hiver) juste au-dessus de ton fil du temps.';
+
+  @override
+  String get aideFaq1Q => 'Puis-je supprimer une luciole ?';
+
+  @override
+  String get aideFaq1R =>
+      'Oui. Dans ton fil du temps (onglet « Moi »), fais glisser une entrée vers la gauche pour voir le bouton de suppression. Cette action est irréversible.';
+
+  @override
+  String get aideFaq2Q => 'Mes données sont-elles privées ?';
+
+  @override
+  String get aideFaq2R =>
+      'Tes entrées avec un lieu peuvent apparaître sur la carte communautaire. Sans lieu, elles restent invisibles des autres. Tu peux aussi filtrer l\'affichage depuis la carte.';
+
+  @override
+  String get aideFaq3Q => 'Puis-je utiliser l\'app sans compte ?';
+
+  @override
+  String get aideFaq3R =>
+      'Tu peux explorer la carte communautaire sans compte. Pour allumer des lucioles et retrouver tes souvenirs, il te faudra créer un compte gratuit.';
+
+  @override
+  String get aideFaq4Q => 'Comment fonctionne la modération ?';
+
+  @override
+  String get aideFaq4R =>
+      'Lucioles repose sur la bienveillance. Tout contenu signalé est examiné par notre équipe. Les contenus inappropriés sont masqués pour préserver un espace positif et respectueux.';
+
+  @override
+  String get onboardingPasser => 'Passer';
+
+  @override
+  String get onboardingSuivant => 'Continuer';
+
+  @override
+  String get onboardingCommencer => 'Allumer ma première luciole ✦';
+
+  @override
+  String get onboarding1Titre => 'Bienvenue dans les Lucioles';
+
+  @override
+  String get onboarding1Corps =>
+      'Chaque jour, une petite lumière. Note un moment positif que tu as vécu dans ton quartier — aussi discret soit-il.';
+
+  @override
+  String get onboarding2Titre => 'Ton atlas de bons souvenirs';
+
+  @override
+  String get onboarding2Corps =>
+      'Localise tes observations et construis ta propre carte. Un atlas intime des endroits qui t\'ont touché.';
+
+  @override
+  String get onboarding3Titre => 'Un espace doux et sécurisé';
+
+  @override
+  String get onboarding3Corps =>
+      'Lucioles repose sur la bienveillance. Chaque contenu est modéré pour que cet espace reste positif et respectueux pour tous.';
+
+  @override
+  String get adminPortalFeedbacks => 'Feedbacks utilisateurs';
+
+  @override
+  String get adminFeedbacksTitle => 'Feedbacks';
+
+  @override
+  String get adminFeedbacksVide => 'Aucun feedback pour l\'instant.';
 
   @override
   String get signalementSignaler => 'Signaler';

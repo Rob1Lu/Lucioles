@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import 'models/admin_feedback.dart';
 import 'models/admin_user.dart';
 import 'models/entree.dart';
 import 'models/signalement_item.dart';
@@ -57,6 +58,13 @@ class SupabaseAdminDatasource {
       final url = await _signedUrl('entree-photos', item.photoUrl!);
       return url != null ? item.copyWith(photoUrl: url) : item;
     }));
+  }
+
+  Future<List<AdminFeedback>> getFeedbacks() async {
+    final data = await _client.rpc('admin_get_feedbacks') as List<dynamic>;
+    return data
+        .map((e) => AdminFeedback.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 
   Future<void> reviewEntree(String entreeId, String action) async {

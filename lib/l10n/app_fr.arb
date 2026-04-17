@@ -228,6 +228,20 @@
   "adminFeedbacksTitle": "Feedbacks",
   "adminFeedbacksVide": "Aucun feedback pour l'instant.",
 
+  "adminArchivesTitle": "Archives",
+  "adminArchivesVide": "Aucun signalement archivé.",
+  "adminArchivesRecherche": "Email, pseudo, contenu, date…",
+  "adminArchivesApprouve": "Approuvé",
+  "adminArchivesRestreint": "Restreint",
+  "adminArchivesDecisionLe": "Décidé le {date}",
+  "@adminArchivesDecisionLe": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "adminArchivesPublieLe": "Publié le {date}",
+  "@adminArchivesPublieLe": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+
   "signalementSignaler": "Signaler",
   "signalementTitre": "Signaler cette luciole",
   "signalementChoixRaison": "Pourquoi veux-tu signaler cette luciole ?",

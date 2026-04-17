@@ -1,6 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'models/admin_feedback.dart';
+import 'models/admin_signalement_archive.dart';
 import 'models/admin_user.dart';
 import 'models/entree.dart';
 import 'models/signalement_item.dart';
@@ -64,6 +65,15 @@ class SupabaseAdminDatasource {
     final data = await _client.rpc('admin_get_feedbacks') as List<dynamic>;
     return data
         .map((e) => AdminFeedback.fromJson(e as Map<String, dynamic>))
+        .toList();
+  }
+
+  Future<List<AdminSignalementArchive>> getSignalementsArchives() async {
+    final data =
+        await _client.rpc('admin_get_signalements_archives') as List<dynamic>;
+    return data
+        .map((e) =>
+            AdminSignalementArchive.fromJson(e as Map<String, dynamic>))
         .toList();
   }
 

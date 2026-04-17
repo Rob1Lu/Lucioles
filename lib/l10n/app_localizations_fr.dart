@@ -640,6 +640,31 @@ class AppLocalizationsFr extends AppLocalizations {
   String get adminFeedbacksVide => 'Aucun feedback pour l\'instant.';
 
   @override
+  String get adminArchivesTitle => 'Archives';
+
+  @override
+  String get adminArchivesVide => 'Aucun signalement archivé.';
+
+  @override
+  String get adminArchivesRecherche => 'Email, pseudo, contenu, date…';
+
+  @override
+  String get adminArchivesApprouve => 'Approuvé';
+
+  @override
+  String get adminArchivesRestreint => 'Restreint';
+
+  @override
+  String adminArchivesDecisionLe(String date) {
+    return 'Décidé le $date';
+  }
+
+  @override
+  String adminArchivesPublieLe(String date) {
+    return 'Publié le $date';
+  }
+
+  @override
   String get signalementSignaler => 'Signaler';
 
   @override

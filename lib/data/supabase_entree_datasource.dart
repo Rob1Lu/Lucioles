@@ -89,6 +89,7 @@ class SupabaseEntreeDatasource {
         .order('date_creation', ascending: false);
 
     final entrees = data.map<Entree>((row) => Entree.fromJson(row)).toList();
+    if (_client.auth.currentUser == null) return entrees;
     return _populerSignedUrls(entrees);
   }
 

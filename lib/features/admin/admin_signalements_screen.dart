@@ -7,6 +7,7 @@ import '../../data/models/admin_user.dart';
 import '../../data/models/signalement_item.dart';
 import '../../l10n/app_localizations.dart';
 import '../../shared/providers/admin_provider.dart';
+import 'admin_signalements_archives_screen.dart';
 import 'admin_user_detail_screen.dart';
 
 class AdminSignalementsScreen extends StatefulWidget {
@@ -100,6 +101,21 @@ class _AdminSignalementsScreenState extends State<AdminSignalementsScreen> {
         ),
         backgroundColor: AppTheme.creme,
         scrolledUnderElevation: 0,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.inventory_2_outlined, size: 22),
+            color: AppTheme.texteSecondaire,
+            tooltip: l10n.adminArchivesTitle,
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => ChangeNotifierProvider.value(
+                  value: context.read<AdminProvider>(),
+                  child: const AdminSignalementsArchivesScreen(),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       body: _chargement
           ? const Center(

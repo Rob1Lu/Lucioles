@@ -228,6 +228,20 @@
   "adminFeedbacksTitle": "Opiniones",
   "adminFeedbacksVide": "Aún no hay opiniones.",
 
+  "adminArchivesTitle": "Archivos",
+  "adminArchivesVide": "No hay reportes archivados.",
+  "adminArchivesRecherche": "Email, usuario, contenido, fecha…",
+  "adminArchivesApprouve": "Aprobado",
+  "adminArchivesRestreint": "Restringido",
+  "adminArchivesDecisionLe": "Decidido el {date}",
+  "@adminArchivesDecisionLe": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "adminArchivesPublieLe": "Publicado el {date}",
+  "@adminArchivesPublieLe": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+
   "signalementSignaler": "Reportar",
   "signalementTitre": "Reportar esta luciérnaga",
   "signalementChoixRaison": "¿Por qué quieres reportar esta luciérnaga?",

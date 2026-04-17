@@ -637,6 +637,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adminFeedbacksVide => 'No feedbacks yet.';
 
   @override
+  String get adminArchivesTitle => 'Archives';
+
+  @override
+  String get adminArchivesVide => 'No archived reports.';
+
+  @override
+  String get adminArchivesRecherche => 'Email, username, content, date…';
+
+  @override
+  String get adminArchivesApprouve => 'Approved';
+
+  @override
+  String get adminArchivesRestreint => 'Restricted';
+
+  @override
+  String adminArchivesDecisionLe(String date) {
+    return 'Decided on $date';
+  }
+
+  @override
+  String adminArchivesPublieLe(String date) {
+    return 'Published on $date';
+  }
+
+  @override
   String get signalementSignaler => 'Report';
 
   @override

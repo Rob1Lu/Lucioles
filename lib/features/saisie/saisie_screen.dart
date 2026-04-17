@@ -108,12 +108,15 @@ class _SaisieScreenState extends State<SaisieScreen> {
     try {
       final storagePath = await _uploaderPhoto(photo, entree.id);
       if (!mounted) return;
-      await context.read<EntreesProvider>().updatePhotoUrl(entree.id, storagePath);
+      await context.read<EntreesProvider>().updatePhotoUrl(
+        entree.id,
+        storagePath,
+      );
       if (!mounted) return;
       final l10n = AppLocalizations.of(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        buildStyledSnackBar(l10n.saisieAjoutPhotoConfirmation),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(buildStyledSnackBar(l10n.saisieAjoutPhotoConfirmation));
     } finally {
       if (mounted) setState(() => _enCoursAjoutPhoto = false);
     }
@@ -155,9 +158,9 @@ class _SaisieScreenState extends State<SaisieScreen> {
 
   void _afficherConfirmation() {
     final l10n = AppLocalizations.of(context);
-    ScaffoldMessenger.of(context).showSnackBar(
-      buildStyledSnackBar(l10n.saisieConfirmation),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(buildStyledSnackBar(l10n.saisieConfirmation));
   }
 
   // ─── Construction de l'UI ─────────────────────────────────────────────────
@@ -335,9 +338,9 @@ class _SaisieScreenState extends State<SaisieScreen> {
             Text(
               '"${entree.texte}"',
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    fontStyle: FontStyle.italic,
-                    color: AppTheme.textePrincipal,
-                  ),
+                fontStyle: FontStyle.italic,
+                color: AppTheme.textePrincipal,
+              ),
             ),
 
             // Lieu si présent
@@ -379,13 +382,18 @@ class _SaisieScreenState extends State<SaisieScreen> {
             const SizedBox(height: 40),
 
             // Message de retour
-            Text(
-              l10n.saisieDejaFaite,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  l10n.saisieDejaFaite,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: AppTheme.texteTertaire,
                     fontStyle: FontStyle.italic,
                   ),
-              textAlign: TextAlign.center,
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
 
             // Bouton d'ajout de photo — uniquement si aucune photo n'existe encore
@@ -505,16 +513,15 @@ class _SaisieScreenState extends State<SaisieScreen> {
           maxLength: AppConstants.maxCaracteres,
           maxLines: 5,
           minLines: 3,
-          buildCounter: (_, {required currentLength, required isFocused, maxLength}) =>
-              null, // Compteur personnalisé ci-dessous
+          buildCounter:
+              (_, {required currentLength, required isFocused, maxLength}) =>
+                  null, // Compteur personnalisé ci-dessous
           style: GoogleFonts.playfairDisplay(
             fontSize: 17,
             color: AppTheme.textePrincipal,
             height: 1.7,
           ),
-          decoration: InputDecoration(
-            hintText: l10n.saisieHint,
-          ),
+          decoration: InputDecoration(hintText: l10n.saisieHint),
           validator: (value) {
             if (value == null || value.trim().isEmpty) {
               return l10n.saisieValidator;
@@ -548,10 +555,9 @@ class _SaisieScreenState extends State<SaisieScreen> {
       children: [
         Text(
           label,
-          style: Theme.of(context)
-              .textTheme
-              .labelMedium
-              ?.copyWith(color: AppTheme.texteSecondaire),
+          style: Theme.of(
+            context,
+          ).textTheme.labelMedium?.copyWith(color: AppTheme.texteSecondaire),
         ),
         const SizedBox(width: 12),
         const Expanded(child: Divider()),

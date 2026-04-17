@@ -1228,6 +1228,48 @@ abstract class AppLocalizations {
   /// **'Aucun feedback pour l\'instant.'**
   String get adminFeedbacksVide;
 
+  /// No description provided for @adminArchivesTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Archives'**
+  String get adminArchivesTitle;
+
+  /// No description provided for @adminArchivesVide.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun signalement archivé.'**
+  String get adminArchivesVide;
+
+  /// No description provided for @adminArchivesRecherche.
+  ///
+  /// In fr, this message translates to:
+  /// **'Email, pseudo, contenu, date…'**
+  String get adminArchivesRecherche;
+
+  /// No description provided for @adminArchivesApprouve.
+  ///
+  /// In fr, this message translates to:
+  /// **'Approuvé'**
+  String get adminArchivesApprouve;
+
+  /// No description provided for @adminArchivesRestreint.
+  ///
+  /// In fr, this message translates to:
+  /// **'Restreint'**
+  String get adminArchivesRestreint;
+
+  /// No description provided for @adminArchivesDecisionLe.
+  ///
+  /// In fr, this message translates to:
+  /// **'Décidé le {date}'**
+  String adminArchivesDecisionLe(String date);
+
+  /// No description provided for @adminArchivesPublieLe.
+  ///
+  /// In fr, this message translates to:
+  /// **'Publié le {date}'**
+  String adminArchivesPublieLe(String date);
+
   /// No description provided for @signalementSignaler.
   ///
   /// In fr, this message translates to:

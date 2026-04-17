@@ -15,10 +15,10 @@ import '../../data/repositories/entree_repository.dart';
 class EntreesProvider extends ChangeNotifier {
   EntreesProvider({EntreeRepository? repository})
       : _repository = repository ?? EntreeRepository() {
-    // Charge immédiatement si une session est déjà active
+    // Charge immédiatement — les lucioles communautaires sont publiques
+    chargerToutesGeolocalisees();
     if (Supabase.instance.client.auth.currentUser != null) {
       charger();
-      chargerToutesGeolocalisees();
     }
 
     _authSub = Supabase.instance.client.auth.onAuthStateChange.listen((data) {
@@ -27,10 +27,10 @@ class EntreesProvider extends ChangeNotifier {
         chargerToutesGeolocalisees();
       } else if (data.event == AuthChangeEvent.signedOut) {
         _entrees = [];
-        _toutesGeolocalisees = [];
         _dejaEntreeCeJour = false;
         _entreeJour = null;
         notifyListeners();
+        chargerToutesGeolocalisees();
       }
     });
   }
@@ -89,9 +89,7 @@ class EntreesProvider extends ChangeNotifier {
   }
 
   /// Charge toutes les lucioles géolocalisées de la communauté.
-  /// Sans effet si l'utilisateur n'est pas connecté.
   Future<void> chargerToutesGeolocalisees() async {
-    if (Supabase.instance.client.auth.currentUser == null) return;
     _toutesGeolocalisees = await _repository.getAllGeolocalisees();
     notifyListeners();
   }

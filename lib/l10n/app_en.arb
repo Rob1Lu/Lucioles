@@ -228,6 +228,20 @@
   "adminFeedbacksTitle": "Feedbacks",
   "adminFeedbacksVide": "No feedbacks yet.",
 
+  "adminArchivesTitle": "Archives",
+  "adminArchivesVide": "No archived reports.",
+  "adminArchivesRecherche": "Email, username, content, date…",
+  "adminArchivesApprouve": "Approved",
+  "adminArchivesRestreint": "Restricted",
+  "adminArchivesDecisionLe": "Decided on {date}",
+  "@adminArchivesDecisionLe": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+  "adminArchivesPublieLe": "Published on {date}",
+  "@adminArchivesPublieLe": {
+    "placeholders": { "date": { "type": "String" } }
+  },
+
   "signalementSignaler": "Report",
   "signalementTitre": "Report this firefly",
   "signalementChoixRaison": "Why do you want to report this firefly?",

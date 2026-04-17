@@ -140,6 +140,44 @@
   "profilLierApple": "Lier un compte Apple",
   "profilAppleBientot": "Liaison Apple bientôt disponible",
   "profilConnexion": "Connexion",
+  "profilParametresCompte": "Paramètres du compte",
+  "adminAccesBouton": "Portail admin",
+  "adminPortalTitle": "Portail admin",
+  "adminPortalStats": "Statistiques",
+  "adminPortalGestion": "Gestion",
+  "adminPortalUtilisateurs": "Gestion des utilisateurs",
+  "adminPortalSignalements": "Gestion des signalements",
+  "adminPortalBientot": "Bientôt",
+  "adminUsersTitle": "Utilisateurs",
+  "adminUsersRecherche": "Rechercher un utilisateur…",
+  "adminUsersVide": "Aucun utilisateur trouvé.",
+  "adminUsersSupprimerTitre": "Supprimer l'utilisateur ?",
+  "adminUsersSupprimerMessage": "Le compte de {nom} sera supprimé définitivement. Cette action est irréversible.",
+  "@adminUsersSupprimerMessage": {
+    "placeholders": { "nom": { "type": "String" } }
+  },
+  "adminUserDetailTitle": "Profil utilisateur",
+
+  "adminLucioleRestrictTitre": "Restreindre cette luciole ?",
+  "adminLucioleRestrictMsg": "Elle sera masquée de la communauté. Cette action est réversible.",
+  "adminLucioleApprouverTitre": "Approuver cette luciole ?",
+  "adminLucioleApprouverMsg": "Elle sera de nouveau visible dans la communauté.",
+  "adminSignalementsUserSupprimeLabel": "Compte supprimé",
+  "adminSignalementsTitle": "Signalements",
+  "adminSignalementsVide": "Aucun signalement en attente.",
+  "adminSignalementsApprouver": "Approuver",
+  "adminSignalementsRestreindre": "Restreindre",
+  "adminSignalementsTagRestreinte": "Restreinte",
+  "adminSignalementsTagRecidiviste": "Récidiviste",
+  "adminSignalementsVoirProfil": "Voir le profil",
+  "adminSignalementsCount": "{count, plural, =1{1 signalement} other{{count} signalements}}",
+  "@adminSignalementsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "adminSignalementsLuciolesSig": "{count, plural, =1{1 luciole signalée} other{{count} lucioles signalées}}",
+  "@adminSignalementsLuciolesSig": {
+    "placeholders": { "count": { "type": "int" } }
+  },
 
   "signalementSignaler": "Signaler",
   "signalementTitre": "Signaler cette luciole",

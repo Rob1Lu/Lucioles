@@ -790,6 +790,174 @@ abstract class AppLocalizations {
   /// **'Connexion'**
   String get profilConnexion;
 
+  /// No description provided for @profilParametresCompte.
+  ///
+  /// In fr, this message translates to:
+  /// **'Paramètres du compte'**
+  String get profilParametresCompte;
+
+  /// No description provided for @adminAccesBouton.
+  ///
+  /// In fr, this message translates to:
+  /// **'Portail admin'**
+  String get adminAccesBouton;
+
+  /// No description provided for @adminPortalTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Portail admin'**
+  String get adminPortalTitle;
+
+  /// No description provided for @adminPortalStats.
+  ///
+  /// In fr, this message translates to:
+  /// **'Statistiques'**
+  String get adminPortalStats;
+
+  /// No description provided for @adminPortalGestion.
+  ///
+  /// In fr, this message translates to:
+  /// **'Gestion'**
+  String get adminPortalGestion;
+
+  /// No description provided for @adminPortalUtilisateurs.
+  ///
+  /// In fr, this message translates to:
+  /// **'Gestion des utilisateurs'**
+  String get adminPortalUtilisateurs;
+
+  /// No description provided for @adminPortalSignalements.
+  ///
+  /// In fr, this message translates to:
+  /// **'Gestion des signalements'**
+  String get adminPortalSignalements;
+
+  /// No description provided for @adminPortalBientot.
+  ///
+  /// In fr, this message translates to:
+  /// **'Bientôt'**
+  String get adminPortalBientot;
+
+  /// No description provided for @adminUsersTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Utilisateurs'**
+  String get adminUsersTitle;
+
+  /// No description provided for @adminUsersRecherche.
+  ///
+  /// In fr, this message translates to:
+  /// **'Rechercher un utilisateur…'**
+  String get adminUsersRecherche;
+
+  /// No description provided for @adminUsersVide.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun utilisateur trouvé.'**
+  String get adminUsersVide;
+
+  /// No description provided for @adminUsersSupprimerTitre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Supprimer l\'utilisateur ?'**
+  String get adminUsersSupprimerTitre;
+
+  /// No description provided for @adminUsersSupprimerMessage.
+  ///
+  /// In fr, this message translates to:
+  /// **'Le compte de {nom} sera supprimé définitivement. Cette action est irréversible.'**
+  String adminUsersSupprimerMessage(String nom);
+
+  /// No description provided for @adminUserDetailTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Profil utilisateur'**
+  String get adminUserDetailTitle;
+
+  /// No description provided for @adminLucioleRestrictTitre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Restreindre cette luciole ?'**
+  String get adminLucioleRestrictTitre;
+
+  /// No description provided for @adminLucioleRestrictMsg.
+  ///
+  /// In fr, this message translates to:
+  /// **'Elle sera masquée de la communauté. Cette action est réversible.'**
+  String get adminLucioleRestrictMsg;
+
+  /// No description provided for @adminLucioleApprouverTitre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Approuver cette luciole ?'**
+  String get adminLucioleApprouverTitre;
+
+  /// No description provided for @adminLucioleApprouverMsg.
+  ///
+  /// In fr, this message translates to:
+  /// **'Elle sera de nouveau visible dans la communauté.'**
+  String get adminLucioleApprouverMsg;
+
+  /// No description provided for @adminSignalementsUserSupprimeLabel.
+  ///
+  /// In fr, this message translates to:
+  /// **'Compte supprimé'**
+  String get adminSignalementsUserSupprimeLabel;
+
+  /// No description provided for @adminSignalementsTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Signalements'**
+  String get adminSignalementsTitle;
+
+  /// No description provided for @adminSignalementsVide.
+  ///
+  /// In fr, this message translates to:
+  /// **'Aucun signalement en attente.'**
+  String get adminSignalementsVide;
+
+  /// No description provided for @adminSignalementsApprouver.
+  ///
+  /// In fr, this message translates to:
+  /// **'Approuver'**
+  String get adminSignalementsApprouver;
+
+  /// No description provided for @adminSignalementsRestreindre.
+  ///
+  /// In fr, this message translates to:
+  /// **'Restreindre'**
+  String get adminSignalementsRestreindre;
+
+  /// No description provided for @adminSignalementsTagRestreinte.
+  ///
+  /// In fr, this message translates to:
+  /// **'Restreinte'**
+  String get adminSignalementsTagRestreinte;
+
+  /// No description provided for @adminSignalementsTagRecidiviste.
+  ///
+  /// In fr, this message translates to:
+  /// **'Récidiviste'**
+  String get adminSignalementsTagRecidiviste;
+
+  /// No description provided for @adminSignalementsVoirProfil.
+  ///
+  /// In fr, this message translates to:
+  /// **'Voir le profil'**
+  String get adminSignalementsVoirProfil;
+
+  /// No description provided for @adminSignalementsCount.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{1 signalement} other{{count} signalements}}'**
+  String adminSignalementsCount(int count);
+
+  /// No description provided for @adminSignalementsLuciolesSig.
+  ///
+  /// In fr, this message translates to:
+  /// **'{count, plural, =1{1 luciole signalée} other{{count} lucioles signalées}}'**
+  String adminSignalementsLuciolesSig(int count);
+
   /// No description provided for @signalementSignaler.
   ///
   /// In fr, this message translates to:

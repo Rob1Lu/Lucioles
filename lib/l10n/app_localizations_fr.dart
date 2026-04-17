@@ -389,6 +389,110 @@ class AppLocalizationsFr extends AppLocalizations {
   String get profilConnexion => 'Connexion';
 
   @override
+  String get profilParametresCompte => 'Paramètres du compte';
+
+  @override
+  String get adminAccesBouton => 'Portail admin';
+
+  @override
+  String get adminPortalTitle => 'Portail admin';
+
+  @override
+  String get adminPortalStats => 'Statistiques';
+
+  @override
+  String get adminPortalGestion => 'Gestion';
+
+  @override
+  String get adminPortalUtilisateurs => 'Gestion des utilisateurs';
+
+  @override
+  String get adminPortalSignalements => 'Gestion des signalements';
+
+  @override
+  String get adminPortalBientot => 'Bientôt';
+
+  @override
+  String get adminUsersTitle => 'Utilisateurs';
+
+  @override
+  String get adminUsersRecherche => 'Rechercher un utilisateur…';
+
+  @override
+  String get adminUsersVide => 'Aucun utilisateur trouvé.';
+
+  @override
+  String get adminUsersSupprimerTitre => 'Supprimer l\'utilisateur ?';
+
+  @override
+  String adminUsersSupprimerMessage(String nom) {
+    return 'Le compte de $nom sera supprimé définitivement. Cette action est irréversible.';
+  }
+
+  @override
+  String get adminUserDetailTitle => 'Profil utilisateur';
+
+  @override
+  String get adminLucioleRestrictTitre => 'Restreindre cette luciole ?';
+
+  @override
+  String get adminLucioleRestrictMsg =>
+      'Elle sera masquée de la communauté. Cette action est réversible.';
+
+  @override
+  String get adminLucioleApprouverTitre => 'Approuver cette luciole ?';
+
+  @override
+  String get adminLucioleApprouverMsg =>
+      'Elle sera de nouveau visible dans la communauté.';
+
+  @override
+  String get adminSignalementsUserSupprimeLabel => 'Compte supprimé';
+
+  @override
+  String get adminSignalementsTitle => 'Signalements';
+
+  @override
+  String get adminSignalementsVide => 'Aucun signalement en attente.';
+
+  @override
+  String get adminSignalementsApprouver => 'Approuver';
+
+  @override
+  String get adminSignalementsRestreindre => 'Restreindre';
+
+  @override
+  String get adminSignalementsTagRestreinte => 'Restreinte';
+
+  @override
+  String get adminSignalementsTagRecidiviste => 'Récidiviste';
+
+  @override
+  String get adminSignalementsVoirProfil => 'Voir le profil';
+
+  @override
+  String adminSignalementsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count signalements',
+      one: '1 signalement',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminSignalementsLuciolesSig(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count lucioles signalées',
+      one: '1 luciole signalée',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get signalementSignaler => 'Signaler';
 
   @override

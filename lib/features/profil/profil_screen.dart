@@ -6,15 +6,16 @@ import 'package:provider/provider.dart';
 
 import '../../core/constants.dart';
 import '../../core/theme.dart';
-import '../../core/ui_helpers.dart';
 import '../../data/models/entree.dart';
 import '../../features/auth/auth_screen.dart';
 import '../../features/fil/widgets/entree_card_widget.dart';
 import '../../l10n/app_localizations.dart';
 import '../../shared/providers/auth_provider.dart';
 import '../../shared/providers/entrees_provider.dart';
-import '../../shared/providers/locale_provider.dart';
+import '../../shared/providers/admin_provider.dart';
 import '../../shared/providers/profile_provider.dart';
+import '../admin/admin_portal_screen.dart';
+import 'parametres_compte_screen.dart';
 
 /// Écran Profil — troisième onglet.
 class ProfilScreen extends StatefulWidget {
@@ -27,44 +28,6 @@ class ProfilScreen extends StatefulWidget {
 class _ProfilScreenState extends State<ProfilScreen> {
   Saison _filtreSaison = Saison.toutes;
   final _imagePicker = ImagePicker();
-  bool _googleEstaitLie = false;
-  late AuthProvider _authRef;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      _authRef = context.read<AuthProvider>();
-      _googleEstaitLie = _aGoogleIdentity(_authRef);
-      _authRef.addListener(_onAuthChanged);
-    });
-  }
-
-  bool _aGoogleIdentity(AuthProvider auth) =>
-      auth.utilisateur?.identities
-          ?.any((i) => i.provider == 'google') ??
-      false;
-
-  void _onAuthChanged() {
-    final maintenant = _aGoogleIdentity(_authRef);
-    if (!_googleEstaitLie && maintenant && mounted) {
-      final l10n = AppLocalizations.of(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        buildStyledSnackBar(
-          l10n.profilLierGoogleConfirmation,
-          duration: const Duration(seconds: 2),
-        ),
-      );
-    }
-    _googleEstaitLie = maintenant;
-  }
-
-  @override
-  void dispose() {
-    _authRef.removeListener(_onAuthChanged);
-    super.dispose();
-  }
 
   // ─── Helpers de localisation ───────────────────────────────────────────────
 
@@ -150,56 +113,6 @@ class _ProfilScreenState extends State<ProfilScreen> {
     );
   }
 
-  void _confirmerSuppressionCompte() {
-    final l10n = AppLocalizations.of(context);
-
-    showDialog<void>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppTheme.creme,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Text(
-          l10n.profilSupprimerTitre,
-          style: GoogleFonts.playfairDisplay(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: AppTheme.textePrincipal,
-          ),
-        ),
-        content: Text(
-          l10n.profilSupprimerMessage,
-          style: GoogleFonts.inter(
-            fontSize: 14,
-            color: AppTheme.texteSecondaire,
-            height: 1.5,
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(),
-            child: Text(
-              l10n.filSupprimerAnnuler,
-              style: GoogleFonts.inter(color: AppTheme.texteSecondaire),
-            ),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(ctx).pop();
-              context.read<AuthProvider>().supprimerCompte();
-            },
-            child: Text(
-              l10n.profilSupprimerConfirmer,
-              style: GoogleFonts.inter(
-                color: Colors.red.shade400,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   // ─── Confirmation de suppression d'entrée ─────────────────────────────────
 
   void _confirmerSuppression(
@@ -254,8 +167,8 @@ class _ProfilScreenState extends State<ProfilScreen> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
 
-    return Consumer4<EntreesProvider, LocaleProvider, AuthProvider, ProfileProvider>(
-      builder: (context, entreesProvider, localeProvider, authProvider, profileProvider, _) {
+    return Consumer3<EntreesProvider, AuthProvider, ProfileProvider>(
+      builder: (context, entreesProvider, authProvider, profileProvider, _) {
         final entrees = entreesProvider.entrees;
         final entreesFiltrees = _filtrerParSaison(entrees);
 
@@ -279,41 +192,27 @@ class _ProfilScreenState extends State<ProfilScreen> {
                   profileProvider: profileProvider,
                   l10n: l10n,
                   onAvatarTap: _selectionnerAvatar,
-                  onEditPseudoTap: () => _afficherDialoguePseudo(profileProvider.username),
+                  onEditPseudoTap: () =>
+                      _afficherDialoguePseudo(profileProvider.username),
                 ),
               ),
 
-              // ── Section lier Google (si connecté) ──────────────────────────
+              // ── Bouton paramètres du compte ───────────────────────────────
               if (authProvider.estConnecte)
                 SliverToBoxAdapter(
-                  child: _SectionLierGoogle(
-                    authProvider: authProvider,
-                    l10n: l10n,
-                  ),
+                  child: _BoutonParametres(l10n: l10n),
+                ),
+
+              // ── Bouton portail admin (admins uniquement) ──────────────────
+              if (profileProvider.isAdmin)
+                SliverToBoxAdapter(
+                  child: _BoutonAdmin(l10n: l10n),
                 ),
 
               // ── Stats ─────────────────────────────────────────────────────
               SliverToBoxAdapter(
                 child: _StatsCard(entrees: entrees, l10n: l10n),
               ),
-
-              // ── Langue ────────────────────────────────────────────────────
-              SliverToBoxAdapter(
-                child: _SectionLangue(
-                  localeProvider: localeProvider,
-                  l10n: l10n,
-                ),
-              ),
-
-              // ── Zone sensible (suppression de compte) ─────────────────────
-              if (authProvider.estConnecte)
-                SliverToBoxAdapter(
-                  child: _SectionZoneSensible(
-                    l10n: l10n,
-                    chargement: authProvider.chargement,
-                    onSupprimerCompte: _confirmerSuppressionCompte,
-                  ),
-                ),
 
               // ── Fil du temps — en-tête ────────────────────────────────────
               SliverToBoxAdapter(
@@ -440,7 +339,6 @@ class _SectionCompte extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Pseudo modifiable
                 GestureDetector(
                   onTap: onEditPseudoTap,
                   child: Row(
@@ -472,7 +370,6 @@ class _SectionCompte extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 2),
-                // Email
                 Text(
                   authProvider.email ?? '',
                   style: GoogleFonts.inter(
@@ -483,17 +380,6 @@ class _SectionCompte extends StatelessWidget {
                 ),
               ],
             ),
-          ),
-
-          // ── Déconnexion ──────────────────────────────────────────────────
-          TextButton(
-            onPressed: () => _confirmerDeconnexion(context),
-            style: TextButton.styleFrom(
-              foregroundColor: AppTheme.texteSecondaire,
-              textStyle: GoogleFonts.inter(fontSize: 12),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-            ),
-            child: Text(l10n.authSeDeconnecter),
           ),
         ],
       ),
@@ -551,7 +437,8 @@ class _SectionCompte extends StatelessWidget {
             ),
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-              textStyle: GoogleFonts.inter(fontSize: 13, fontWeight: FontWeight.w600),
+              textStyle:
+                  GoogleFonts.inter(fontSize: 13, fontWeight: FontWeight.w600),
             ),
             child: Text(l10n.profilNonConnecteBouton),
           ),
@@ -559,40 +446,106 @@ class _SectionCompte extends StatelessWidget {
       ),
     );
   }
+}
 
-  void _confirmerDeconnexion(BuildContext context) {
-    showDialog<void>(
-      context: context,
-      builder: (ctx) => AlertDialog(
-        backgroundColor: AppTheme.creme,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        title: Text(
-          l10n.authSeDeconnecter,
-          style: GoogleFonts.playfairDisplay(
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            color: AppTheme.textePrincipal,
+// ─── Bouton vers les paramètres du compte ─────────────────────────────────────
+
+class _BoutonParametres extends StatelessWidget {
+  const _BoutonParametres({required this.l10n});
+
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(20, 4, 20, 4),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.6),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppTheme.cremeTres),
+      ),
+      child: InkWell(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => const ParametresCompteScreen(),
           ),
         ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(ctx).pop(),
-            child: Text(
-              l10n.filSupprimerAnnuler,
-              style: GoogleFonts.inter(color: AppTheme.texteSecondaire),
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          child: Row(
+            children: [
+              Icon(Icons.settings_outlined,
+                  size: 18, color: AppTheme.texteSecondaire),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  l10n.profilParametresCompte,
+                  style: GoogleFonts.inter(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: AppTheme.textePrincipal,
+                  ),
+                ),
+              ),
+              Icon(Icons.chevron_right_rounded,
+                  size: 20, color: AppTheme.texteTertaire),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ─── Bouton portail admin ─────────────────────────────────────────────────────
+
+class _BoutonAdmin extends StatelessWidget {
+  const _BoutonAdmin({required this.l10n});
+
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(20, 4, 20, 4),
+      decoration: BoxDecoration(
+        color: AppTheme.sage.withValues(alpha: 0.08),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppTheme.sageClair.withValues(alpha: 0.5)),
+      ),
+      child: InkWell(
+        onTap: () => Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => ChangeNotifierProvider(
+              create: (_) => AdminProvider(),
+              child: const AdminPortalScreen(),
             ),
           ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(ctx).pop();
-              authProvider.seDeconnecter();
-            },
-            child: Text(
-              l10n.authSeDeconnecter,
-              style: GoogleFonts.inter(color: Colors.red.shade400),
-            ),
+        ),
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          child: Row(
+            children: [
+              Icon(Icons.admin_panel_settings_outlined,
+                  size: 18, color: AppTheme.sage),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  l10n.adminAccesBouton,
+                  style: GoogleFonts.inter(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: AppTheme.sage,
+                  ),
+                ),
+              ),
+              Icon(Icons.chevron_right_rounded,
+                  size: 20, color: AppTheme.sage.withValues(alpha: 0.6)),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
@@ -614,7 +567,8 @@ class _AvatarCircle extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: AppTheme.sagePale,
-        border: Border.all(color: AppTheme.sageClair.withValues(alpha: 0.4), width: 1.5),
+        border: Border.all(
+            color: AppTheme.sageClair.withValues(alpha: 0.4), width: 1.5),
       ),
       child: ClipOval(
         child: chargement
@@ -632,7 +586,8 @@ class _AvatarCircle extends StatelessWidget {
                 ? Image.network(
                     signedUrl!,
                     fit: BoxFit.cover,
-                    errorBuilder: (ctx, err, stack) => const _AvatarPlaceholder(),
+                    errorBuilder: (ctx, err, stack) =>
+                        const _AvatarPlaceholder(),
                   )
                 : const _AvatarPlaceholder(),
       ),
@@ -651,276 +606,7 @@ class _AvatarPlaceholder extends StatelessWidget {
   }
 }
 
-// ─── Section zone sensible ────────────────────────────────────────────────────
-
-class _SectionZoneSensible extends StatelessWidget {
-  const _SectionZoneSensible({
-    required this.l10n,
-    required this.chargement,
-    required this.onSupprimerCompte,
-  });
-
-  final AppLocalizations l10n;
-  final bool chargement;
-  final VoidCallback onSupprimerCompte;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _TitreSectionProfil(titre: l10n.profilZoneSensible),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.6),
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppTheme.cremeTres),
-          ),
-          child: InkWell(
-            onTap: chargement ? null : onSupprimerCompte,
-            borderRadius: BorderRadius.circular(16),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.delete_outline_rounded,
-                    size: 18,
-                    color: Colors.red.shade400,
-                  ),
-                  const SizedBox(width: 12),
-                  Text(
-                    l10n.profilSupprimerCompte,
-                    style: GoogleFonts.inter(
-                      fontSize: 14,
-                      color: Colors.red.shade400,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 8),
-      ],
-    );
-  }
-}
-
-// ─── Section connexion (comptes liés) ────────────────────────────────────────
-
-class _SectionLierGoogle extends StatelessWidget {
-  const _SectionLierGoogle({
-    required this.authProvider,
-    required this.l10n,
-  });
-
-  final AuthProvider authProvider;
-  final AppLocalizations l10n;
-
-  @override
-  Widget build(BuildContext context) {
-    final identities = authProvider.utilisateur?.identities ?? [];
-    final googleIdentity =
-        identities.where((i) => i.provider == 'google').firstOrNull;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _TitreSectionProfil(titre: l10n.profilConnexion),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.6),
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppTheme.cremeTres),
-          ),
-          child: Column(
-            children: [
-              // ── Ligne Google ─────────────────────────────────────────────
-              _LigneProvider(
-                icon: _GoogleIconProfil(),
-                titre: googleIdentity != null
-                    ? l10n.profilCompteLie
-                    : l10n.profilLierGoogle,
-                sousTitre: googleIdentity?.identityData?['email'] as String?,
-                estLie: googleIdentity != null,
-                chargement: authProvider.chargement,
-                isFirst: true,
-                isLast: false,
-                onTap: googleIdentity != null
-                    ? null
-                    : () => authProvider.lierGoogle(),
-              ),
-
-              Divider(
-                height: 1,
-                indent: 18,
-                endIndent: 18,
-                color: AppTheme.cremeTres,
-              ),
-
-              // ── Ligne Apple ──────────────────────────────────────────────
-              _LigneProvider(
-                icon: const Icon(
-                  Icons.apple_rounded,
-                  size: 20,
-                  color: AppTheme.texteSecondaire,
-                ),
-                titre: l10n.profilLierApple,
-                sousTitre: null,
-                estLie: false,
-                chargement: false,
-                isFirst: false,
-                isLast: true,
-                onTap: () => ScaffoldMessenger.of(context).showSnackBar(
-                  buildStyledSnackBar(
-                    l10n.profilAppleBientot,
-                    duration: const Duration(seconds: 2),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-        const SizedBox(height: 8),
-      ],
-    );
-  }
-}
-
-/// Une ligne fournisseur dans la section Connexion.
-class _LigneProvider extends StatelessWidget {
-  const _LigneProvider({
-    required this.icon,
-    required this.titre,
-    required this.sousTitre,
-    required this.estLie,
-    required this.chargement,
-    required this.isFirst,
-    required this.isLast,
-    required this.onTap,
-  });
-
-  final Widget icon;
-  final String titre;
-  final String? sousTitre;
-  final bool estLie;
-  final bool chargement;
-  final bool isFirst;
-  final bool isLast;
-  final VoidCallback? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: chargement ? null : onTap,
-      borderRadius: BorderRadius.vertical(
-        top: isFirst ? const Radius.circular(16) : Radius.zero,
-        bottom: isLast ? const Radius.circular(16) : Radius.zero,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
-        child: Row(
-          children: [
-            // Icône fournisseur
-            SizedBox(width: 22, child: icon),
-            const SizedBox(width: 12),
-
-            // Titre + sous-titre (email si lié)
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    titre,
-                    style: GoogleFonts.inter(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: onTap != null && !estLie
-                          ? AppTheme.sage
-                          : AppTheme.textePrincipal,
-                    ),
-                  ),
-                  if (sousTitre != null) ...[
-                    const SizedBox(height: 2),
-                    Text(
-                      sousTitre!,
-                      style: GoogleFonts.inter(
-                        fontSize: 12,
-                        color: AppTheme.texteSecondaire,
-                      ),
-                    ),
-                  ],
-                ],
-              ),
-            ),
-
-            // État à droite
-            if (chargement)
-              const SizedBox(
-                width: 16,
-                height: 16,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                  color: AppTheme.sage,
-                ),
-              )
-            else if (estLie)
-              Icon(
-                Icons.check_circle_rounded,
-                size: 18,
-                color: AppTheme.sage,
-              )
-            else if (onTap != null)
-              Icon(
-                Icons.add_rounded,
-                size: 18,
-                color: AppTheme.texteTertaire,
-              )
-            else
-              Icon(
-                Icons.schedule_rounded,
-                size: 16,
-                color: AppTheme.texteTertaire,
-              ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// Icône "G" Google pour la section profil.
-class _GoogleIconProfil extends StatelessWidget {
-  const _GoogleIconProfil();
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 20,
-      height: 20,
-      decoration: const BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.white,
-      ),
-      alignment: Alignment.center,
-      child: const Text(
-        'G',
-        style: TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.w700,
-          color: Color(0xFF4285F4),
-          height: 1,
-        ),
-      ),
-    );
-  }
-}
-
-// ─── Widgets internes (inchangés) ─────────────────────────────────────────────
+// ─── Widgets internes ─────────────────────────────────────────────────────────
 
 class _StatsCard extends StatelessWidget {
   const _StatsCard({required this.entrees, required this.l10n});
@@ -1005,79 +691,6 @@ class _StatsCard extends StatelessWidget {
   }
 }
 
-class _SectionLangue extends StatelessWidget {
-  const _SectionLangue({required this.localeProvider, required this.l10n});
-
-  final LocaleProvider localeProvider;
-  final AppLocalizations l10n;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _TitreSectionProfil(titre: l10n.profilLangueSection),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.6),
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppTheme.cremeTres),
-          ),
-          child: Column(
-            children: LocaleProvider.supportedLocales.map((locale) {
-              final code = locale.languageCode;
-              final isSelected = localeProvider.locale.languageCode == code;
-              final isLast = locale == LocaleProvider.supportedLocales.last;
-              return Column(
-                children: [
-                  InkWell(
-                    onTap: () => localeProvider.setLocale(locale),
-                    borderRadius: BorderRadius.circular(16),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 18, vertical: 14),
-                      child: Row(
-                        children: [
-                          Text(LocaleProvider.drapeaux[code] ?? '',
-                              style: const TextStyle(fontSize: 22)),
-                          const SizedBox(width: 14),
-                          Text(
-                            LocaleProvider.nomLangues[code] ?? code,
-                            style: GoogleFonts.inter(
-                              fontSize: 15,
-                              fontWeight: isSelected
-                                  ? FontWeight.w600
-                                  : FontWeight.w400,
-                              color: isSelected
-                                  ? AppTheme.textePrincipal
-                                  : AppTheme.texteSecondaire,
-                            ),
-                          ),
-                          const Spacer(),
-                          AnimatedOpacity(
-                            opacity: isSelected ? 1.0 : 0.0,
-                            duration: const Duration(milliseconds: 200),
-                            child: Icon(Icons.check_rounded,
-                                size: 18, color: AppTheme.sage),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  if (!isLast)
-                    Divider(height: 1, indent: 56, color: AppTheme.cremeTres),
-                ],
-              );
-            }).toList(),
-          ),
-        ),
-        const SizedBox(height: 8),
-      ],
-    );
-  }
-}
-
 class _FilHeader extends StatelessWidget {
   const _FilHeader({
     required this.l10n,
@@ -1157,7 +770,8 @@ class _EtatVideFil extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             estFiltre
-                ? l10n.filVideFiltre(labelSaison(filtreSaison, l10n).toLowerCase())
+                ? l10n.filVideFiltre(
+                    labelSaison(filtreSaison, l10n).toLowerCase())
                 : l10n.filVide,
             style: GoogleFonts.playfairDisplay(
               fontSize: 18,

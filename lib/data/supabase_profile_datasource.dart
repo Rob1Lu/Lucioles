@@ -8,11 +8,11 @@ class SupabaseProfileDatasource {
 
   String get _userId => _client.auth.currentUser!.id;
 
-  /// Retourne les champs `username` et `avatar_url` du profil courant.
+  /// Retourne les champs `username`, `avatar_url` et `is_admin` du profil courant.
   Future<Map<String, dynamic>?> getProfile() async {
     return await _client
         .from('profiles')
-        .select('username, avatar_url')
+        .select('username, avatar_url, is_admin')
         .eq('id', _userId)
         .maybeSingle();
   }

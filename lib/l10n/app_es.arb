@@ -140,6 +140,44 @@
   "profilLierApple": "Vincular una cuenta de Apple",
   "profilAppleBientot": "Vinculación con Apple próximamente",
   "profilConnexion": "Inicio de sesión",
+  "profilParametresCompte": "Ajustes de la cuenta",
+  "adminAccesBouton": "Portal admin",
+  "adminPortalTitle": "Portal admin",
+  "adminPortalStats": "Estadísticas",
+  "adminPortalGestion": "Gestión",
+  "adminPortalUtilisateurs": "Gestión de usuarios",
+  "adminPortalSignalements": "Gestión de reportes",
+  "adminPortalBientot": "Próximamente",
+  "adminUsersTitle": "Usuarios",
+  "adminUsersRecherche": "Buscar un usuario…",
+  "adminUsersVide": "No se encontraron usuarios.",
+  "adminUsersSupprimerTitre": "¿Eliminar usuario?",
+  "adminUsersSupprimerMessage": "La cuenta de {nom} se eliminará definitivamente. Esta acción es irreversible.",
+  "@adminUsersSupprimerMessage": {
+    "placeholders": { "nom": { "type": "String" } }
+  },
+  "adminUserDetailTitle": "Perfil de usuario",
+
+  "adminLucioleRestrictTitre": "¿Restringir esta luciérnaga?",
+  "adminLucioleRestrictMsg": "Se ocultará de la comunidad. Esta acción es reversible.",
+  "adminLucioleApprouverTitre": "¿Aprobar esta luciérnaga?",
+  "adminLucioleApprouverMsg": "Volverá a ser visible en la comunidad.",
+  "adminSignalementsUserSupprimeLabel": "Cuenta eliminada",
+  "adminSignalementsTitle": "Reportes",
+  "adminSignalementsVide": "Sin reportes pendientes.",
+  "adminSignalementsApprouver": "Aprobar",
+  "adminSignalementsRestreindre": "Restringir",
+  "adminSignalementsTagRestreinte": "Restringida",
+  "adminSignalementsTagRecidiviste": "Reincidente",
+  "adminSignalementsVoirProfil": "Ver perfil",
+  "adminSignalementsCount": "{count, plural, =1{1 reporte} other{{count} reportes}}",
+  "@adminSignalementsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "adminSignalementsLuciolesSig": "{count, plural, =1{1 luciérnaga reportada} other{{count} luciérnagas reportadas}}",
+  "@adminSignalementsLuciolesSig": {
+    "placeholders": { "count": { "type": "int" } }
+  },
 
   "signalementSignaler": "Reportar",
   "signalementTitre": "Reportar esta luciérnaga",

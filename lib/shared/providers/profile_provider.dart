@@ -29,15 +29,18 @@ class ProfileProvider extends ChangeNotifier {
 
   String? _username;
   String? _avatarSignedUrl;
+  bool _isAdmin = false;
   bool _chargement = false;
 
   String? get username => _username;
   String? get avatarSignedUrl => _avatarSignedUrl;
+  bool get isAdmin => _isAdmin;
   bool get chargement => _chargement;
 
   void _vider() {
     _username = null;
     _avatarSignedUrl = null;
+    _isAdmin = false;
     notifyListeners();
   }
 
@@ -48,6 +51,7 @@ class ProfileProvider extends ChangeNotifier {
     if (data == null) return;
 
     _username = data['username'] as String?;
+    _isAdmin = data['is_admin'] as bool? ?? false;
     final avatarPath = data['avatar_url'] as String?;
     _avatarSignedUrl = avatarPath != null
         ? await _datasource.getAvatarSignedUrl(avatarPath)

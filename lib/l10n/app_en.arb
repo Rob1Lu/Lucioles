@@ -140,6 +140,44 @@
   "profilLierApple": "Link an Apple account",
   "profilAppleBientot": "Apple linking coming soon",
   "profilConnexion": "Sign-in",
+  "profilParametresCompte": "Account settings",
+  "adminAccesBouton": "Admin portal",
+  "adminPortalTitle": "Admin portal",
+  "adminPortalStats": "Statistics",
+  "adminPortalGestion": "Management",
+  "adminPortalUtilisateurs": "User management",
+  "adminPortalSignalements": "Report management",
+  "adminPortalBientot": "Soon",
+  "adminUsersTitle": "Users",
+  "adminUsersRecherche": "Search for a user…",
+  "adminUsersVide": "No users found.",
+  "adminUsersSupprimerTitre": "Delete user?",
+  "adminUsersSupprimerMessage": "The account of {nom} will be permanently deleted. This action is irreversible.",
+  "@adminUsersSupprimerMessage": {
+    "placeholders": { "nom": { "type": "String" } }
+  },
+  "adminUserDetailTitle": "User profile",
+
+  "adminLucioleRestrictTitre": "Restrict this firefly?",
+  "adminLucioleRestrictMsg": "It will be hidden from the community. This action is reversible.",
+  "adminLucioleApprouverTitre": "Approve this firefly?",
+  "adminLucioleApprouverMsg": "It will be visible to the community again.",
+  "adminSignalementsUserSupprimeLabel": "Deleted account",
+  "adminSignalementsTitle": "Reports",
+  "adminSignalementsVide": "No pending reports.",
+  "adminSignalementsApprouver": "Approve",
+  "adminSignalementsRestreindre": "Restrict",
+  "adminSignalementsTagRestreinte": "Restricted",
+  "adminSignalementsTagRecidiviste": "Repeat offender",
+  "adminSignalementsVoirProfil": "View profile",
+  "adminSignalementsCount": "{count, plural, =1{1 report} other{{count} reports}}",
+  "@adminSignalementsCount": {
+    "placeholders": { "count": { "type": "int" } }
+  },
+  "adminSignalementsLuciolesSig": "{count, plural, =1{1 reported firefly} other{{count} reported fireflies}}",
+  "@adminSignalementsLuciolesSig": {
+    "placeholders": { "count": { "type": "int" } }
+  },
 
   "signalementSignaler": "Report",
   "signalementTitre": "Report this firefly",

@@ -386,6 +386,110 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profilConnexion => 'Sign-in';
 
   @override
+  String get profilParametresCompte => 'Account settings';
+
+  @override
+  String get adminAccesBouton => 'Admin portal';
+
+  @override
+  String get adminPortalTitle => 'Admin portal';
+
+  @override
+  String get adminPortalStats => 'Statistics';
+
+  @override
+  String get adminPortalGestion => 'Management';
+
+  @override
+  String get adminPortalUtilisateurs => 'User management';
+
+  @override
+  String get adminPortalSignalements => 'Report management';
+
+  @override
+  String get adminPortalBientot => 'Soon';
+
+  @override
+  String get adminUsersTitle => 'Users';
+
+  @override
+  String get adminUsersRecherche => 'Search for a user…';
+
+  @override
+  String get adminUsersVide => 'No users found.';
+
+  @override
+  String get adminUsersSupprimerTitre => 'Delete user?';
+
+  @override
+  String adminUsersSupprimerMessage(String nom) {
+    return 'The account of $nom will be permanently deleted. This action is irreversible.';
+  }
+
+  @override
+  String get adminUserDetailTitle => 'User profile';
+
+  @override
+  String get adminLucioleRestrictTitre => 'Restrict this firefly?';
+
+  @override
+  String get adminLucioleRestrictMsg =>
+      'It will be hidden from the community. This action is reversible.';
+
+  @override
+  String get adminLucioleApprouverTitre => 'Approve this firefly?';
+
+  @override
+  String get adminLucioleApprouverMsg =>
+      'It will be visible to the community again.';
+
+  @override
+  String get adminSignalementsUserSupprimeLabel => 'Deleted account';
+
+  @override
+  String get adminSignalementsTitle => 'Reports';
+
+  @override
+  String get adminSignalementsVide => 'No pending reports.';
+
+  @override
+  String get adminSignalementsApprouver => 'Approve';
+
+  @override
+  String get adminSignalementsRestreindre => 'Restrict';
+
+  @override
+  String get adminSignalementsTagRestreinte => 'Restricted';
+
+  @override
+  String get adminSignalementsTagRecidiviste => 'Repeat offender';
+
+  @override
+  String get adminSignalementsVoirProfil => 'View profile';
+
+  @override
+  String adminSignalementsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count reports',
+      one: '1 report',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminSignalementsLuciolesSig(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count reported fireflies',
+      one: '1 reported firefly',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get signalementSignaler => 'Report';
 
   @override

@@ -389,6 +389,110 @@ class AppLocalizationsEs extends AppLocalizations {
   String get profilConnexion => 'Inicio de sesión';
 
   @override
+  String get profilParametresCompte => 'Ajustes de la cuenta';
+
+  @override
+  String get adminAccesBouton => 'Portal admin';
+
+  @override
+  String get adminPortalTitle => 'Portal admin';
+
+  @override
+  String get adminPortalStats => 'Estadísticas';
+
+  @override
+  String get adminPortalGestion => 'Gestión';
+
+  @override
+  String get adminPortalUtilisateurs => 'Gestión de usuarios';
+
+  @override
+  String get adminPortalSignalements => 'Gestión de reportes';
+
+  @override
+  String get adminPortalBientot => 'Próximamente';
+
+  @override
+  String get adminUsersTitle => 'Usuarios';
+
+  @override
+  String get adminUsersRecherche => 'Buscar un usuario…';
+
+  @override
+  String get adminUsersVide => 'No se encontraron usuarios.';
+
+  @override
+  String get adminUsersSupprimerTitre => '¿Eliminar usuario?';
+
+  @override
+  String adminUsersSupprimerMessage(String nom) {
+    return 'La cuenta de $nom se eliminará definitivamente. Esta acción es irreversible.';
+  }
+
+  @override
+  String get adminUserDetailTitle => 'Perfil de usuario';
+
+  @override
+  String get adminLucioleRestrictTitre => '¿Restringir esta luciérnaga?';
+
+  @override
+  String get adminLucioleRestrictMsg =>
+      'Se ocultará de la comunidad. Esta acción es reversible.';
+
+  @override
+  String get adminLucioleApprouverTitre => '¿Aprobar esta luciérnaga?';
+
+  @override
+  String get adminLucioleApprouverMsg =>
+      'Volverá a ser visible en la comunidad.';
+
+  @override
+  String get adminSignalementsUserSupprimeLabel => 'Cuenta eliminada';
+
+  @override
+  String get adminSignalementsTitle => 'Reportes';
+
+  @override
+  String get adminSignalementsVide => 'Sin reportes pendientes.';
+
+  @override
+  String get adminSignalementsApprouver => 'Aprobar';
+
+  @override
+  String get adminSignalementsRestreindre => 'Restringir';
+
+  @override
+  String get adminSignalementsTagRestreinte => 'Restringida';
+
+  @override
+  String get adminSignalementsTagRecidiviste => 'Reincidente';
+
+  @override
+  String get adminSignalementsVoirProfil => 'Ver perfil';
+
+  @override
+  String adminSignalementsCount(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count reportes',
+      one: '1 reporte',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String adminSignalementsLuciolesSig(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count luciérnagas reportadas',
+      one: '1 luciérnaga reportada',
+    );
+    return '$_temp0';
+  }
+
+  @override
   String get signalementSignaler => 'Reportar';
 
   @override

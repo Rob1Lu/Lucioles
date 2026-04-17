@@ -13,6 +13,7 @@ class Entree {
     this.longitude,
     this.lieuNom,
     this.photoUrl,
+    this.isRestricted = false,
   });
 
   final String id;
@@ -32,6 +33,9 @@ class Entree {
   final String? photoUrl;
 
   final DateTime dateCreation;
+
+  /// true si un admin a restreint cette entrée (masquée de la communauté)
+  final bool isRestricted;
 
   // ─── Propriétés dérivées ──────────────────────────────────────────────────
 
@@ -71,6 +75,7 @@ class Entree {
         lieuNom: json['lieu_nom'] as String?,
         photoUrl: json['photo_url'] as String?,
         dateCreation: DateTime.parse(json['date_creation'] as String),
+        isRestricted: json['is_restricted'] as bool? ?? false,
       );
 
   Entree copyWith({
@@ -81,6 +86,7 @@ class Entree {
     String? lieuNom,
     String? photoUrl,
     DateTime? dateCreation,
+    bool? isRestricted,
   }) =>
       Entree(
         id: id ?? this.id,
@@ -90,6 +96,7 @@ class Entree {
         lieuNom: lieuNom ?? this.lieuNom,
         photoUrl: photoUrl ?? this.photoUrl,
         dateCreation: dateCreation ?? this.dateCreation,
+        isRestricted: isRestricted ?? this.isRestricted,
       );
 
   @override

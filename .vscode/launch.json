@@ -7,19 +7,22 @@
         {
             "name": "Lucioles (debug)",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args": ["--dart-define-from-file=.env.local"]
         },
         {
             "name": "Lucioles (profile)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "flutterMode": "profile",
+            "args": ["--dart-define-from-file=.env.local"]
         },
         {
             "name": "Lucioles (release)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "release",
+            "args": ["--dart-define-from-file=.env.production"]
         }
     ]
 }

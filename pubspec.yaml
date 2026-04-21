@@ -52,11 +52,13 @@ dependencies:
 
   # Rendu SVG (icône de l'app)
   flutter_svg: ^2.0.17
+  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^6.0.0
+  flutter_launcher_icons: "^0.14.4"
 
 flutter:
   uses-material-design: true
@@ -64,3 +66,9 @@ flutter:
 
   assets:
     - lib/assets/icons/
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "lib/assets/images/lucioles_icon.png"
+  min_sdk_android: 21

@@ -4,7 +4,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../core/constants.dart';
+import '../../core/supabase_config.dart';
 import '../../core/theme.dart';
 import '../../data/models/entree.dart';
 import '../../features/auth/auth_screen.dart';
@@ -222,6 +225,12 @@ class _ProfilScreenState extends State<ProfilScreen> {
               SliverToBoxAdapter(
                 child: _BoutonAide(l10n: l10n),
               ),
+
+              // ── Bouton don (si URL configurée) ────────────────────────────
+              if (SupabaseConfig.donateUrl.isNotEmpty)
+                SliverToBoxAdapter(
+                  child: _BoutonDon(l10n: l10n),
+                ),
 
               // ── Stats ─────────────────────────────────────────────────────
               SliverToBoxAdapter(
@@ -557,6 +566,66 @@ class _BoutonAdmin extends StatelessWidget {
               ),
               Icon(Icons.chevron_right_rounded,
                   size: 20, color: AppTheme.sage.withValues(alpha: 0.6)),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ─── Bouton don ───────────────────────────────────────────────────────────────
+
+class _BoutonDon extends StatelessWidget {
+  const _BoutonDon({required this.l10n});
+
+  final AppLocalizations l10n;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(20, 4, 20, 4),
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFF8E7),
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: const Color(0xFFFFD966).withValues(alpha: 0.5)),
+      ),
+      child: InkWell(
+        onTap: () => launchUrl(
+          Uri.parse(SupabaseConfig.donateUrl),
+          mode: LaunchMode.externalApplication,
+        ),
+        borderRadius: BorderRadius.circular(16),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+          child: Row(
+            children: [
+              const Text('☕', style: TextStyle(fontSize: 18)),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.donAccesBouton,
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        color: AppTheme.textePrincipal,
+                      ),
+                    ),
+                    Text(
+                      l10n.donSousTitre,
+                      style: GoogleFonts.inter(
+                        fontSize: 11,
+                        color: AppTheme.texteSecondaire,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.open_in_new_rounded,
+                  size: 16, color: AppTheme.texteTertaire),
             ],
           ),
         ),

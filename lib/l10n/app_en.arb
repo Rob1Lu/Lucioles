@@ -368,6 +368,11 @@
   "feedbackMessageVide": "Please write a message.",
   "@feedbackMessageVide": { "description": "Validation error: feedback message empty" },
 
+  "donAccesBouton": "Support the developer",
+  "@donAccesBouton": { "description": "Buy Me a Coffee button in profile" },
+  "donSousTitre": "Buy Me a Coffee ☕",
+  "@donSousTitre": { "description": "Donate button subtitle" },
+
   "aideAccesBouton": "Help",
   "@aideAccesBouton": { "description": "Help screen access button in profile" },
   "aideTitle": "Help",

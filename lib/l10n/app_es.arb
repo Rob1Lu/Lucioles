@@ -368,6 +368,11 @@
   "feedbackMessageVide": "Por favor, escribe un mensaje.",
   "@feedbackMessageVide": { "description": "Error validación: mensaje de opinión vacío" },
 
+  "donAccesBouton": "Apoyar al desarrollador",
+  "@donAccesBouton": { "description": "Botón Buy Me a Coffee en el perfil" },
+  "donSousTitre": "Buy Me a Coffee ☕",
+  "@donSousTitre": { "description": "Subtítulo botón donación" },
+
   "aideAccesBouton": "Ayuda",
   "@aideAccesBouton": { "description": "Botón acceso pantalla ayuda en el perfil" },
   "aideTitle": "Ayuda",

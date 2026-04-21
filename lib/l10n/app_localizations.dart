@@ -880,6 +880,30 @@ abstract class AppLocalizations {
   /// **'Profil utilisateur'**
   String get adminUserDetailTitle;
 
+  /// Titre dialogue grant admin
+  ///
+  /// In fr, this message translates to:
+  /// **'Accorder les droits admin ?'**
+  String get adminUsersGrantAdminTitre;
+
+  /// Message dialogue grant admin
+  ///
+  /// In fr, this message translates to:
+  /// **'{nom} aura accès au portail admin.'**
+  String adminUsersGrantAdminMessage(String nom);
+
+  /// Titre dialogue revoke admin
+  ///
+  /// In fr, this message translates to:
+  /// **'Retirer les droits admin ?'**
+  String get adminUsersRevokeAdminTitre;
+
+  /// Message dialogue revoke admin
+  ///
+  /// In fr, this message translates to:
+  /// **'{nom} n\'aura plus accès au portail admin.'**
+  String adminUsersRevokeAdminMessage(String nom);
+
   /// Titre dialogue restriction de luciole
   ///
   /// In fr, this message translates to:
@@ -1083,6 +1107,18 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'Écris un message.'**
   String get feedbackMessageVide;
+
+  /// Bouton Buy Me a Coffee dans le profil
+  ///
+  /// In fr, this message translates to:
+  /// **'Soutenir le développeur'**
+  String get donAccesBouton;
+
+  /// Sous-titre bouton don
+  ///
+  /// In fr, this message translates to:
+  /// **'Buy Me a Coffee ☕'**
+  String get donSousTitre;
 
   /// Bouton accès écran aide dans le profil
   ///

@@ -382,6 +382,11 @@
   "feedbackMessageVide": "Écris un message.",
   "@feedbackMessageVide": { "description": "Erreur validation message feedback vide" },
 
+  "donAccesBouton": "Soutenir le développeur",
+  "@donAccesBouton": { "description": "Bouton Buy Me a Coffee dans le profil" },
+  "donSousTitre": "Buy Me a Coffee ☕",
+  "@donSousTitre": { "description": "Sous-titre bouton don" },
+
   "aideAccesBouton": "Aide",
   "@aideAccesBouton": { "description": "Bouton accès écran aide dans le profil" },
   "aideTitle": "Aide",

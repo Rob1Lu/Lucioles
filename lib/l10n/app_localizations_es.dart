@@ -436,6 +436,22 @@ class AppLocalizationsEs extends AppLocalizations {
   String get adminUserDetailTitle => 'Perfil de usuario';
 
   @override
+  String get adminUsersGrantAdminTitre => 'Accorder les droits admin ?';
+
+  @override
+  String adminUsersGrantAdminMessage(String nom) {
+    return '$nom aura accès au portail admin.';
+  }
+
+  @override
+  String get adminUsersRevokeAdminTitre => 'Retirer les droits admin ?';
+
+  @override
+  String adminUsersRevokeAdminMessage(String nom) {
+    return '$nom n\'aura plus accès au portail admin.';
+  }
+
+  @override
   String get adminLucioleRestrictTitre => '¿Restringir esta luciérnaga?';
 
   @override
@@ -558,6 +574,12 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get feedbackMessageVide => 'Por favor, escribe un mensaje.';
+
+  @override
+  String get donAccesBouton => 'Apoyar al desarrollador';
+
+  @override
+  String get donSousTitre => 'Buy Me a Coffee ☕';
 
   @override
   String get aideAccesBouton => 'Ayuda';

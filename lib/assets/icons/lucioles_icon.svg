@@ -1,44 +1,19 @@
-<svg width="300" height="280" viewBox="0 0 300 280" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" viewBox="0 0 680 680" role="img" style="" xmlns="http://www.w3.org/2000/svg">
+  <title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Lucioles — logo trois ✦ v6</title>
+  <desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Logo Lucioles : trois ✦ sur fond crème</desc>
 
-  <!-- Hexagone -->
-  <polygon points="150,14 256,72 256,208 150,266 44,208 44,72"
-    fill="#1a1a3a" stroke="#f5c842" stroke-width="0.8" stroke-opacity="0.15"/>
+  <g transform="translate(340, 340)" style="fill:rgb(0, 0, 0);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">
+    <circle cx="0" cy="0" r="220" fill="#fdf6e3" style="fill:rgb(253, 246, 227);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-  <!-- Fils rayonnants du centre vers chaque luciole -->
-  <line x1="150" y1="132" x2="150" y2="68" stroke="#f5c842" stroke-width="1.1" stroke-opacity="0.45"/>
-  <line x1="158" y1="138" x2="214" y2="106" stroke="#f5c842" stroke-width="1.1" stroke-opacity="0.40"/>
-  <line x1="157" y1="147" x2="204" y2="188" stroke="#f5c842" stroke-width="1.1" stroke-opacity="0.40"/>
-  <line x1="150" y1="151" x2="138" y2="208" stroke="#f5c842" stroke-width="1.1" stroke-opacity="0.38"/>
-  <line x1="142" y1="146" x2="96" y2="178" stroke="#f5c842" stroke-width="1.1" stroke-opacity="0.40"/>
-  <line x1="143" y1="137" x2="100" y2="102" stroke="#f5c842" stroke-width="1.1" stroke-opacity="0.40"/>
+    <!-- ✦ central grand -->
+    <path d="M0,-110 C12,-30 30,-12 110,0 C30,12 12,30 0,110 C-12,30 -30,12 -110,0 C-30,-12 -12,-30 0,-110 Z" fill="#c8860a" style="fill:rgb(200, 134, 10);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-  <!-- Luciole centrale -->
-  <circle cx="150" cy="140" r="16" fill="#f5c842"/>
-  <circle cx="150" cy="140" r="26" fill="#f5c842" opacity="0.18"/>
-  <circle cx="150" cy="140" r="36" fill="#f5c842" opacity="0.07"/>
+    <!-- ✦ doré moyen — axe ~10°, à droite -->
+    <path d="M148,-60 C151,-46 155,-42 168,-40 C155,-38 151,-34 148,-20 C145,-34 141,-38 128,-40 C141,-42 145,-46 148,-60 Z" fill="#c8860a" opacity="0.65" style="fill:rgb(200, 134, 10);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.65;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-  <!-- haut -->
-  <circle cx="150" cy="64" r="9" fill="#f5c842"/>
-  <circle cx="150" cy="64" r="16" fill="#f5c842" opacity="0.16"/>
+    <!-- ✦ vert sauge — axe ~40°, plus haut -->
+    <path d="M92,-130 C96,-112 102,-106 120,-104 C102,-102 96,-96 92,-78 C88,-96 82,-102 64,-104 C82,-106 88,-112 92,-130 Z" fill="#5a8a5e" opacity="0.75" style="fill:rgb(90, 138, 94);stroke:none;color:rgb(0, 0, 0);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:0.75;font-family:&quot;Anthropic Sans&quot;, -apple-system, &quot;system-ui&quot;, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
 
-  <!-- droite haute -->
-  <circle cx="216" cy="102" r="8" fill="#f5c842" opacity="0.9"/>
-  <circle cx="216" cy="102" r="14" fill="#f5c842" opacity="0.14"/>
-
-  <!-- droite basse -->
-  <circle cx="206" cy="190" r="10" fill="#f5c842"/>
-  <circle cx="206" cy="190" r="17" fill="#f5c842" opacity="0.14"/>
-
-  <!-- bas -->
-  <circle cx="136" cy="210" r="7.5" fill="#f5c842" opacity="0.85"/>
-  <circle cx="136" cy="210" r="13" fill="#f5c842" opacity="0.13"/>
-
-  <!-- gauche basse -->
-  <circle cx="94" cy="180" r="8" fill="#f5c842" opacity="0.9"/>
-  <circle cx="94" cy="180" r="14" fill="#f5c842" opacity="0.15"/>
-
-  <!-- gauche haute — teinte verte douce -->
-  <circle cx="98" cy="100" r="7" fill="#a8e6a3" opacity="0.9"/>
-  <circle cx="98" cy="100" r="13" fill="#a8e6a3" opacity="0.15"/>
+  </g>
 
 </svg>

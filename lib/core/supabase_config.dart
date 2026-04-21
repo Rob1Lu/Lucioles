@@ -24,6 +24,10 @@ class SupabaseConfig {
   static const String authRedirectScheme = 'fr.orbit.lucioles';
   static const String authRedirectUrl = '$authRedirectScheme://login-callback';
 
+  // ── Liens externes ──────────────────────────────────────────────────────
+  static const String donateUrl =
+      String.fromEnvironment('DONATE_URL', defaultValue: '');
+
   // ── Méthodes d'authentification activées ────────────────────────────────
   // Contrôlées via .env.local / .env.production (dart-define-from-file).
   // false par défaut pour éviter d'activer par inadvertance en cas d'oubli.

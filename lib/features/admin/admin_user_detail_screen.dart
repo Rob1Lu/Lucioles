@@ -24,11 +24,65 @@ class _AdminUserDetailScreenState extends State<AdminUserDetailScreen> {
   String? _avatarSignedUrl;
   List<Entree>? _entrees;
   bool _chargementEntrees = true;
+  late bool _isAdmin;
 
   @override
   void initState() {
     super.initState();
+    _isAdmin = widget.user.isAdmin;
     _charger();
+  }
+
+  void _confirmerToggleAdmin(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final grant = !_isAdmin;
+    showDialog<void>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: AppTheme.creme,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        title: Text(
+          grant ? l10n.adminUsersGrantAdminTitre : l10n.adminUsersRevokeAdminTitre,
+          style: GoogleFonts.playfairDisplay(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: AppTheme.textePrincipal,
+          ),
+        ),
+        content: Text(
+          grant
+              ? l10n.adminUsersGrantAdminMessage(widget.user.displayName)
+              : l10n.adminUsersRevokeAdminMessage(widget.user.displayName),
+          style: GoogleFonts.inter(
+            fontSize: 14,
+            color: AppTheme.texteSecondaire,
+            height: 1.5,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: Text(l10n.filSupprimerAnnuler,
+                style: GoogleFonts.inter(color: AppTheme.texteSecondaire)),
+          ),
+          TextButton(
+            onPressed: () async {
+              Navigator.of(ctx).pop();
+              final admin = context.read<AdminProvider>();
+              final ok = await admin.toggleAdminRole(widget.user.id, grant: grant);
+              if (ok && mounted) setState(() => _isAdmin = grant);
+            },
+            child: Text(
+              l10n.carteDatePickerConfirmer,
+              style: GoogleFonts.inter(
+                fontWeight: FontWeight.w600,
+                color: grant ? AppTheme.sage : Colors.red.shade400,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 
   Future<void> _adminReviewer(Entree entree, String action) async {
@@ -111,7 +165,16 @@ class _AdminUserDetailScreenState extends State<AdminUserDetailScreen> {
           SliverToBoxAdapter(
             child: _IdentiteCard(
               user: user,
+              isAdmin: _isAdmin,
               avatarSignedUrl: _avatarSignedUrl,
+            ),
+          ),
+
+          // ── Action admin role ────────────────────────────────────────────
+          SliverToBoxAdapter(
+            child: _AdminRoleCard(
+              isAdmin: _isAdmin,
+              onToggle: () => _confirmerToggleAdmin(context),
             ),
           ),
 
@@ -190,9 +253,14 @@ class _AdminUserDetailScreenState extends State<AdminUserDetailScreen> {
 // ─── Card identité ────────────────────────────────────────────────────────────
 
 class _IdentiteCard extends StatelessWidget {
-  const _IdentiteCard({required this.user, required this.avatarSignedUrl});
+  const _IdentiteCard({
+    required this.user,
+    required this.isAdmin,
+    required this.avatarSignedUrl,
+  });
 
   final AdminUser user;
+  final bool isAdmin;
   final String? avatarSignedUrl;
 
   @override
@@ -253,7 +321,7 @@ class _IdentiteCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                     ),
-                    if (user.isAdmin) ...[
+                    if (isAdmin) ...[
                       const SizedBox(width: 6),
                       Container(
                         padding: const EdgeInsets.symmetric(
@@ -299,6 +367,59 @@ class _IdentiteCard extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// ─── Admin role card ──────────────────────────────────────────────────────────
+
+class _AdminRoleCard extends StatelessWidget {
+  const _AdminRoleCard({required this.isAdmin, required this.onToggle});
+
+  final bool isAdmin;
+  final VoidCallback onToggle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(20, 4, 20, 4),
+      decoration: BoxDecoration(
+        color: Colors.white.withValues(alpha: 0.6),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: AppTheme.cremeTres),
+      ),
+      child: InkWell(
+        onTap: onToggle,
+        borderRadius: BorderRadius.circular(14),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          child: Row(
+            children: [
+              Icon(
+                isAdmin ? Icons.shield_rounded : Icons.shield_outlined,
+                size: 20,
+                color: isAdmin ? AppTheme.sage : AppTheme.texteSecondaire,
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: Text(
+                  isAdmin ? 'Retirer les droits admin' : 'Accorder les droits admin',
+                  style: GoogleFonts.inter(
+                    fontSize: 13,
+                    fontWeight: FontWeight.w500,
+                    color: isAdmin ? Colors.red.shade400 : AppTheme.textePrincipal,
+                  ),
+                ),
+              ),
+              Icon(
+                Icons.chevron_right_rounded,
+                size: 18,
+                color: AppTheme.texteTertaire,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -137,6 +137,22 @@ class AdminProvider extends ChangeNotifier {
     }
   }
 
+  Future<bool> toggleAdminRole(String userId, {required bool grant}) async {
+    try {
+      await _datasource.setAdminRole(userId, grant: grant);
+      final idx = _utilisateurs.indexWhere((u) => u.id == userId);
+      if (idx != -1) {
+        _utilisateurs[idx] = _utilisateurs[idx].copyWith(isAdmin: grant);
+        notifyListeners();
+      }
+      return true;
+    } catch (e) {
+      _erreur = e.toString();
+      notifyListeners();
+      return false;
+    }
+  }
+
   Future<void> chargerSignalementsArchives() async {
     _chargementArchives = true;
     _erreur = null;

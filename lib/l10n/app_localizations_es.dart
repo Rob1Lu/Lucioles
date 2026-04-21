@@ -59,6 +59,13 @@ class AppLocalizationsEs extends AppLocalizations {
   String get saisieAjouterPhoto => 'Añadir una foto';
 
   @override
+  String get saisieAjouterPhotoAposteriori => 'Añadir una foto';
+
+  @override
+  String get saisieAjoutPhotoConfirmation =>
+      'Foto añadida a tu luciérnaga del día ✦';
+
+  @override
   String get lieuUtiliserPosition => 'Usar mi ubicación';
 
   @override
@@ -217,6 +224,75 @@ class AppLocalizationsEs extends AppLocalizations {
   String get profilFilSection => 'Cronología';
 
   @override
+  String get profilCompteSection => 'Cuenta';
+
+  @override
+  String get profilConnecteEmail => 'Conectado como';
+
+  @override
+  String get profilNonConnecteTitre => 'No has iniciado sesión';
+
+  @override
+  String get profilNonConnecteSousTitre =>
+      'Inicia sesión para encender luciérnagas y encontrar todos tus recuerdos.';
+
+  @override
+  String get profilNonConnecteBouton => 'Iniciar sesión';
+
+  @override
+  String get profilPseudo => 'Apodo';
+
+  @override
+  String get profilAjouterPseudo => 'Añadir apodo';
+
+  @override
+  String get profilModifierPseudo => 'Editar apodo';
+
+  @override
+  String get profilSauvegarder => 'Guardar';
+
+  @override
+  String get profilPhotoAvatar => 'Foto de perfil';
+
+  @override
+  String get profilZoneSensible => 'Zona sensible';
+
+  @override
+  String get profilSupprimerCompte => 'Eliminar mi cuenta';
+
+  @override
+  String get profilSupprimerTitre => '¿Eliminar tu cuenta?';
+
+  @override
+  String get profilSupprimerMessage =>
+      'Tu cuenta se eliminará definitivamente. Tus luciérnagas se conservarán de forma anónima pero ya no serán accesibles. Esta acción es irreversible.';
+
+  @override
+  String get profilSupprimerConfirmer => 'Eliminar definitivamente';
+
+  @override
+  String get profilLierGoogle => 'Vincular una cuenta de Google';
+
+  @override
+  String get profilLierGoogleConfirmation =>
+      'Cuenta de Google vinculada exitosamente';
+
+  @override
+  String get profilCompteLie => 'Cuenta vinculada';
+
+  @override
+  String get profilLierApple => 'Vincular una cuenta de Apple';
+
+  @override
+  String get profilAppleBientot => 'Vinculación con Apple próximamente';
+
+  @override
+  String get profilConnexion => 'Inicio de sesión';
+
+  @override
+  String get profilParametresCompte => 'Ajustes de la cuenta';
+
+  @override
   String get filVide => 'Tu atlas está aún vacío.';
 
   @override
@@ -303,6 +379,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get authErreurGenerique => 'Algo salió mal. Inténtalo de nuevo.';
 
   @override
+  String get authAppleBientot => 'Inicio de sesión con Apple próximamente';
+
+  @override
   String get authGateTitre => 'Únete a Lucioles';
 
   @override
@@ -311,85 +390,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get authGateBouton => 'Iniciar sesión o crear una cuenta';
-
-  @override
-  String get profilCompteSection => 'Cuenta';
-
-  @override
-  String get profilConnecteEmail => 'Conectado como';
-
-  @override
-  String get profilNonConnecteTitre => 'No has iniciado sesión';
-
-  @override
-  String get profilNonConnecteSousTitre =>
-      'Inicia sesión para encender luciérnagas y encontrar todos tus recuerdos.';
-
-  @override
-  String get profilNonConnecteBouton => 'Iniciar sesión';
-
-  @override
-  String get profilPseudo => 'Apodo';
-
-  @override
-  String get profilAjouterPseudo => 'Añadir apodo';
-
-  @override
-  String get profilModifierPseudo => 'Editar apodo';
-
-  @override
-  String get profilSauvegarder => 'Guardar';
-
-  @override
-  String get profilPhotoAvatar => 'Foto de perfil';
-
-  @override
-  String get profilZoneSensible => 'Zona sensible';
-
-  @override
-  String get profilSupprimerCompte => 'Eliminar mi cuenta';
-
-  @override
-  String get profilSupprimerTitre => '¿Eliminar tu cuenta?';
-
-  @override
-  String get profilSupprimerMessage =>
-      'Tu cuenta se eliminará definitivamente. Tus luciérnagas se conservarán de forma anónima pero ya no serán accesibles. Esta acción es irreversible.';
-
-  @override
-  String get profilSupprimerConfirmer => 'Eliminar definitivamente';
-
-  @override
-  String get authAppleBientot => 'Inicio de sesión con Apple próximamente';
-
-  @override
-  String get saisieAjouterPhotoAposteriori => 'Añadir una foto';
-
-  @override
-  String get saisieAjoutPhotoConfirmation =>
-      'Foto añadida a tu luciérnaga del día ✦';
-
-  @override
-  String get profilLierGoogle => 'Vincular una cuenta de Google';
-
-  @override
-  String get profilLierGoogleConfirmation =>
-      'Cuenta de Google vinculada exitosamente';
-
-  @override
-  String get profilCompteLie => 'Cuenta vinculada';
-
-  @override
-  String get profilLierApple => 'Vincular una cuenta de Apple';
-
-  @override
-  String get profilAppleBientot => 'Vinculación con Apple próximamente';
-
-  @override
-  String get profilConnexion => 'Inicio de sesión';
-
-  @override
-  String get profilParametresCompte => 'Ajustes de la cuenta';
 
   @override
   String get adminAccesBouton => 'Portal admin';
@@ -413,6 +413,9 @@ class AppLocalizationsEs extends AppLocalizations {
   String get adminPortalBientot => 'Próximamente';
 
   @override
+  String get adminPortalFeedbacks => 'Opiniones de usuarios';
+
+  @override
   String get adminUsersTitle => 'Usuarios';
 
   @override
@@ -431,39 +434,6 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get adminUserDetailTitle => 'Perfil de usuario';
-
-  @override
-  String get feedbackBouton => 'Dar opinión';
-
-  @override
-  String get feedbackTitre => 'Comparte tu opinión';
-
-  @override
-  String get feedbackTypeBug => 'Error';
-
-  @override
-  String get feedbackTypeSuggestion => 'Sugerencia';
-
-  @override
-  String get feedbackTypeAutre => 'Otro';
-
-  @override
-  String get feedbackMessage => 'Tu mensaje';
-
-  @override
-  String get feedbackMessageHint => 'Describe el problema o tu sugerencia…';
-
-  @override
-  String get feedbackEnvoyer => 'Enviar';
-
-  @override
-  String get feedbackConfirmation => '¡Gracias por tu opinión!';
-
-  @override
-  String get feedbackErreur => 'Se produjo un error.';
-
-  @override
-  String get feedbackMessageVide => 'Por favor, escribe un mensaje.';
 
   @override
   String get adminLucioleRestrictTitre => '¿Restringir esta luciérnaga?';
@@ -524,6 +494,70 @@ class AppLocalizationsEs extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get adminFeedbacksTitle => 'Opiniones';
+
+  @override
+  String get adminFeedbacksVide => 'Aún no hay opiniones.';
+
+  @override
+  String get adminArchivesTitle => 'Archivos';
+
+  @override
+  String get adminArchivesVide => 'No hay reportes archivados.';
+
+  @override
+  String get adminArchivesRecherche => 'Email, usuario, contenido, fecha…';
+
+  @override
+  String get adminArchivesApprouve => 'Aprobado';
+
+  @override
+  String get adminArchivesRestreint => 'Restringido';
+
+  @override
+  String adminArchivesDecisionLe(String date) {
+    return 'Decidido el $date';
+  }
+
+  @override
+  String adminArchivesPublieLe(String date) {
+    return 'Publicado el $date';
+  }
+
+  @override
+  String get feedbackBouton => 'Dar opinión';
+
+  @override
+  String get feedbackTitre => 'Comparte tu opinión';
+
+  @override
+  String get feedbackTypeBug => 'Error';
+
+  @override
+  String get feedbackTypeSuggestion => 'Sugerencia';
+
+  @override
+  String get feedbackTypeAutre => 'Otro';
+
+  @override
+  String get feedbackMessage => 'Tu mensaje';
+
+  @override
+  String get feedbackMessageHint => 'Describe el problema o tu sugerencia…';
+
+  @override
+  String get feedbackEnvoyer => 'Enviar';
+
+  @override
+  String get feedbackConfirmation => '¡Gracias por tu opinión!';
+
+  @override
+  String get feedbackErreur => 'Se produjo un error.';
+
+  @override
+  String get feedbackMessageVide => 'Por favor, escribe un mensaje.';
 
   @override
   String get aideAccesBouton => 'Ayuda';
@@ -629,40 +663,6 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get onboarding3Corps =>
       'Lucioles se basa en la amabilidad. Cada contenido es moderado para que este espacio siga siendo positivo y respetuoso para todos.';
-
-  @override
-  String get adminPortalFeedbacks => 'Opiniones de usuarios';
-
-  @override
-  String get adminFeedbacksTitle => 'Opiniones';
-
-  @override
-  String get adminFeedbacksVide => 'Aún no hay opiniones.';
-
-  @override
-  String get adminArchivesTitle => 'Archivos';
-
-  @override
-  String get adminArchivesVide => 'No hay reportes archivados.';
-
-  @override
-  String get adminArchivesRecherche => 'Email, usuario, contenido, fecha…';
-
-  @override
-  String get adminArchivesApprouve => 'Aprobado';
-
-  @override
-  String get adminArchivesRestreint => 'Restringido';
-
-  @override
-  String adminArchivesDecisionLe(String date) {
-    return 'Decidido el $date';
-  }
-
-  @override
-  String adminArchivesPublieLe(String date) {
-    return 'Publicado el $date';
-  }
 
   @override
   String get signalementSignaler => 'Reportar';

@@ -68,6 +68,13 @@ class SupabaseAdminDatasource {
         .toList();
   }
 
+  Future<void> setAdminRole(String userId, {required bool grant}) async {
+    await _client.rpc('admin_set_admin_role', params: {
+      'target_user_id': userId,
+      'grant_admin': grant,
+    });
+  }
+
   Future<List<AdminSignalementArchive>> getSignalementsArchives() async {
     final data =
         await _client.rpc('admin_get_signalements_archives') as List<dynamic>;

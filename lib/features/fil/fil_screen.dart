@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import '../../core/constants.dart';
 import '../../core/theme.dart';
 import '../../data/models/entree.dart';
+import '../../l10n/app_localizations.dart';
 import '../../shared/providers/entrees_provider.dart';
 import 'widgets/entree_card_widget.dart';
 
@@ -19,13 +20,14 @@ class FilScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<EntreesProvider>(
       builder: (context, provider, _) {
+        final l10n = AppLocalizations.of(context);
         return Scaffold(
           backgroundColor: AppTheme.creme,
           appBar: AppBar(
-            title: const Text('Fil du temps'),
+            title: Text(l10n.profilFilSection),
             bottom: _buildFiltresSaison(context, provider),
           ),
-          body: _buildCorps(context, provider),
+          body: _buildCorps(context, provider, l10n),
         );
       },
     );
@@ -75,7 +77,7 @@ class FilScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCorps(BuildContext context, EntreesProvider provider) {
+  Widget _buildCorps(BuildContext context, EntreesProvider provider, AppLocalizations l10n) {
     // Chargement en cours
     if (provider.chargement) {
       return const Center(
@@ -87,7 +89,7 @@ class FilScreen extends StatelessWidget {
 
     // État vide — premier lancement ou filtre sans résultat
     if (entrees.isEmpty) {
-      return _buildEtatVide(context, provider.filtreSaison);
+      return _buildEtatVide(context, provider.filtreSaison, l10n);
     }
 
     return ListView.builder(
@@ -107,7 +109,7 @@ class FilScreen extends StatelessWidget {
             EntreeCardWidget(
               entree: entree,
               onSupprimerDemande: () =>
-                  _confirmerSuppression(context, provider, entree),
+                  _confirmerSuppression(context, provider, entree, l10n),
             ),
           ],
         );
@@ -138,7 +140,7 @@ class FilScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildEtatVide(BuildContext context, Saison filtre) {
+  Widget _buildEtatVide(BuildContext context, Saison filtre, AppLocalizations l10n) {
     final estFiltre = filtre != Saison.toutes;
 
     return Center(
@@ -154,8 +156,8 @@ class FilScreen extends StatelessWidget {
             const SizedBox(height: 20),
             Text(
               estFiltre
-                  ? 'Aucune luciole\ncet ${filtre.label.toLowerCase()}.'
-                  : 'Ton atlas est encore vide.',
+                  ? l10n.filVideFiltre(filtre.label.toLowerCase())
+                  : l10n.filVide,
               style: GoogleFonts.playfairDisplay(
                 fontSize: 19,
                 fontWeight: FontWeight.w500,
@@ -166,9 +168,7 @@ class FilScreen extends StatelessWidget {
             ),
             const SizedBox(height: 14),
             Text(
-              estFiltre
-                  ? 'Change de saison pour explorer d\'autres souvenirs.'
-                  : 'Commence par noter ce qui t\'a touché cette semaine.',
+              estFiltre ? l10n.filVideFiltreSub : l10n.filVideSub,
               style: GoogleFonts.inter(
                 fontSize: 14,
                 color: AppTheme.texteSecondaire,
@@ -187,6 +187,7 @@ class FilScreen extends StatelessWidget {
     BuildContext context,
     EntreesProvider provider,
     Entree entree,
+    AppLocalizations l10n,
   ) {
     showDialog<void>(
       context: context,
@@ -194,7 +195,7 @@ class FilScreen extends StatelessWidget {
         backgroundColor: AppTheme.creme,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(
-          'Supprimer cette luciole ?',
+          l10n.filSupprimerTitre,
           style: GoogleFonts.playfairDisplay(
             fontSize: 18,
             fontWeight: FontWeight.w600,
@@ -202,7 +203,7 @@ class FilScreen extends StatelessWidget {
           ),
         ),
         content: Text(
-          'Cette action est irréversible. Ton souvenir sera\ndéfinitivement effacé.',
+          l10n.filSupprimerContenu,
           style: GoogleFonts.inter(
             fontSize: 14,
             color: AppTheme.texteSecondaire,
@@ -213,7 +214,7 @@ class FilScreen extends StatelessWidget {
           TextButton(
             onPressed: () => Navigator.of(ctx).pop(),
             child: Text(
-              'Annuler',
+              l10n.filSupprimerAnnuler,
               style: GoogleFonts.inter(color: AppTheme.texteSecondaire),
             ),
           ),
@@ -223,7 +224,7 @@ class FilScreen extends StatelessWidget {
               provider.supprimer(entree.id);
             },
             child: Text(
-              'Supprimer',
+              l10n.filSupprimerConfirmer,
               style: GoogleFonts.inter(color: Colors.red.shade400),
             ),
           ),

@@ -19,6 +19,16 @@ class AdminUser {
 
   String get displayName => username ?? email;
 
+  AdminUser copyWith({bool? isAdmin}) => AdminUser(
+        id: id,
+        email: email,
+        username: username,
+        avatarUrl: avatarUrl,
+        createdAt: createdAt,
+        isAdmin: isAdmin ?? this.isAdmin,
+        lucioleCount: lucioleCount,
+      );
+
   factory AdminUser.fromJson(Map<String, dynamic> json) => AdminUser(
         id: json['id'] as String,
         email: json['email'] as String,

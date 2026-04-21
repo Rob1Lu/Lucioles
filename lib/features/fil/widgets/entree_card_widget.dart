@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../../../core/constants.dart';
 import '../../../core/theme.dart';
 import '../../../data/models/entree.dart';
+import '../../../l10n/app_localizations.dart';
 
 /// Carte représentant une entrée dans le fil du temps.
 ///
@@ -24,7 +25,8 @@ class EntreeCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dateFormat = DateFormat("d MMMM yyyy", "fr_FR");
+    final locale = Localizations.localeOf(context).toString();
+    final dateFormat = DateFormat("d MMMM yyyy", locale);
 
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
@@ -120,7 +122,7 @@ class EntreeCardWidget extends StatelessWidget {
                     GestureDetector(
                       onTap: onSupprimerDemande,
                       child: Text(
-                        'Supprimer',
+                        AppLocalizations.of(context).filSupprimerLabel,
                         style: GoogleFonts.inter(
                           fontSize: 11,
                           color: AppTheme.texteTertaire,

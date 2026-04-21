@@ -58,6 +58,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get saisieAjouterPhoto => 'Add a photo';
 
   @override
+  String get saisieAjouterPhotoAposteriori => 'Add a photo';
+
+  @override
+  String get saisieAjoutPhotoConfirmation =>
+      'Photo added to today\'s firefly ✦';
+
+  @override
   String get lieuUtiliserPosition => 'Use my location';
 
   @override
@@ -215,6 +222,75 @@ class AppLocalizationsEn extends AppLocalizations {
   String get profilFilSection => 'Timeline';
 
   @override
+  String get profilCompteSection => 'Account';
+
+  @override
+  String get profilConnecteEmail => 'Signed in as';
+
+  @override
+  String get profilNonConnecteTitre => 'You are not signed in';
+
+  @override
+  String get profilNonConnecteSousTitre =>
+      'Sign in to light fireflies and find all your memories.';
+
+  @override
+  String get profilNonConnecteBouton => 'Sign in';
+
+  @override
+  String get profilPseudo => 'Username';
+
+  @override
+  String get profilAjouterPseudo => 'Add a username';
+
+  @override
+  String get profilModifierPseudo => 'Edit username';
+
+  @override
+  String get profilSauvegarder => 'Save';
+
+  @override
+  String get profilPhotoAvatar => 'Profile photo';
+
+  @override
+  String get profilZoneSensible => 'Danger zone';
+
+  @override
+  String get profilSupprimerCompte => 'Delete my account';
+
+  @override
+  String get profilSupprimerTitre => 'Delete your account?';
+
+  @override
+  String get profilSupprimerMessage =>
+      'Your account will be permanently deleted. Your fireflies will be kept anonymously but will no longer be accessible. This action is irreversible.';
+
+  @override
+  String get profilSupprimerConfirmer => 'Delete permanently';
+
+  @override
+  String get profilLierGoogle => 'Link a Google account';
+
+  @override
+  String get profilLierGoogleConfirmation =>
+      'Google account linked successfully';
+
+  @override
+  String get profilCompteLie => 'Linked account';
+
+  @override
+  String get profilLierApple => 'Link an Apple account';
+
+  @override
+  String get profilAppleBientot => 'Apple linking coming soon';
+
+  @override
+  String get profilConnexion => 'Sign-in';
+
+  @override
+  String get profilParametresCompte => 'Account settings';
+
+  @override
   String get filVide => 'Your atlas is still empty.';
 
   @override
@@ -300,6 +376,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authErreurGenerique => 'Something went wrong. Please try again.';
 
   @override
+  String get authAppleBientot => 'Apple sign-in coming soon';
+
+  @override
   String get authGateTitre => 'Join Lucioles';
 
   @override
@@ -308,85 +387,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authGateBouton => 'Sign in or create an account';
-
-  @override
-  String get profilCompteSection => 'Account';
-
-  @override
-  String get profilConnecteEmail => 'Signed in as';
-
-  @override
-  String get profilNonConnecteTitre => 'You are not signed in';
-
-  @override
-  String get profilNonConnecteSousTitre =>
-      'Sign in to light fireflies and find all your memories.';
-
-  @override
-  String get profilNonConnecteBouton => 'Sign in';
-
-  @override
-  String get profilPseudo => 'Username';
-
-  @override
-  String get profilAjouterPseudo => 'Add a username';
-
-  @override
-  String get profilModifierPseudo => 'Edit username';
-
-  @override
-  String get profilSauvegarder => 'Save';
-
-  @override
-  String get profilPhotoAvatar => 'Profile photo';
-
-  @override
-  String get profilZoneSensible => 'Danger zone';
-
-  @override
-  String get profilSupprimerCompte => 'Delete my account';
-
-  @override
-  String get profilSupprimerTitre => 'Delete your account?';
-
-  @override
-  String get profilSupprimerMessage =>
-      'Your account will be permanently deleted. Your fireflies will be kept anonymously but will no longer be accessible. This action is irreversible.';
-
-  @override
-  String get profilSupprimerConfirmer => 'Delete permanently';
-
-  @override
-  String get authAppleBientot => 'Apple sign-in coming soon';
-
-  @override
-  String get saisieAjouterPhotoAposteriori => 'Add a photo';
-
-  @override
-  String get saisieAjoutPhotoConfirmation =>
-      'Photo added to today\'s firefly ✦';
-
-  @override
-  String get profilLierGoogle => 'Link a Google account';
-
-  @override
-  String get profilLierGoogleConfirmation =>
-      'Google account linked successfully';
-
-  @override
-  String get profilCompteLie => 'Linked account';
-
-  @override
-  String get profilLierApple => 'Link an Apple account';
-
-  @override
-  String get profilAppleBientot => 'Apple linking coming soon';
-
-  @override
-  String get profilConnexion => 'Sign-in';
-
-  @override
-  String get profilParametresCompte => 'Account settings';
 
   @override
   String get adminAccesBouton => 'Admin portal';
@@ -410,6 +410,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get adminPortalBientot => 'Soon';
 
   @override
+  String get adminPortalFeedbacks => 'User feedbacks';
+
+  @override
   String get adminUsersTitle => 'Users';
 
   @override
@@ -428,39 +431,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get adminUserDetailTitle => 'User profile';
-
-  @override
-  String get feedbackBouton => 'Give feedback';
-
-  @override
-  String get feedbackTitre => 'Share your feedback';
-
-  @override
-  String get feedbackTypeBug => 'Bug';
-
-  @override
-  String get feedbackTypeSuggestion => 'Suggestion';
-
-  @override
-  String get feedbackTypeAutre => 'Other';
-
-  @override
-  String get feedbackMessage => 'Your message';
-
-  @override
-  String get feedbackMessageHint => 'Describe the issue or your suggestion…';
-
-  @override
-  String get feedbackEnvoyer => 'Send';
-
-  @override
-  String get feedbackConfirmation => 'Thanks for your feedback!';
-
-  @override
-  String get feedbackErreur => 'An error occurred.';
-
-  @override
-  String get feedbackMessageVide => 'Please write a message.';
 
   @override
   String get adminLucioleRestrictTitre => 'Restrict this firefly?';
@@ -521,6 +491,70 @@ class AppLocalizationsEn extends AppLocalizations {
     );
     return '$_temp0';
   }
+
+  @override
+  String get adminFeedbacksTitle => 'Feedbacks';
+
+  @override
+  String get adminFeedbacksVide => 'No feedbacks yet.';
+
+  @override
+  String get adminArchivesTitle => 'Archives';
+
+  @override
+  String get adminArchivesVide => 'No archived reports.';
+
+  @override
+  String get adminArchivesRecherche => 'Email, username, content, date…';
+
+  @override
+  String get adminArchivesApprouve => 'Approved';
+
+  @override
+  String get adminArchivesRestreint => 'Restricted';
+
+  @override
+  String adminArchivesDecisionLe(String date) {
+    return 'Decided on $date';
+  }
+
+  @override
+  String adminArchivesPublieLe(String date) {
+    return 'Published on $date';
+  }
+
+  @override
+  String get feedbackBouton => 'Give feedback';
+
+  @override
+  String get feedbackTitre => 'Share your feedback';
+
+  @override
+  String get feedbackTypeBug => 'Bug';
+
+  @override
+  String get feedbackTypeSuggestion => 'Suggestion';
+
+  @override
+  String get feedbackTypeAutre => 'Other';
+
+  @override
+  String get feedbackMessage => 'Your message';
+
+  @override
+  String get feedbackMessageHint => 'Describe the issue or your suggestion…';
+
+  @override
+  String get feedbackEnvoyer => 'Send';
+
+  @override
+  String get feedbackConfirmation => 'Thanks for your feedback!';
+
+  @override
+  String get feedbackErreur => 'An error occurred.';
+
+  @override
+  String get feedbackMessageVide => 'Please write a message.';
 
   @override
   String get aideAccesBouton => 'Help';
@@ -626,40 +660,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get onboarding3Corps =>
       'Lucioles is built on kindness. Every piece of content is moderated to keep this space positive and respectful for everyone.';
-
-  @override
-  String get adminPortalFeedbacks => 'User feedbacks';
-
-  @override
-  String get adminFeedbacksTitle => 'Feedbacks';
-
-  @override
-  String get adminFeedbacksVide => 'No feedbacks yet.';
-
-  @override
-  String get adminArchivesTitle => 'Archives';
-
-  @override
-  String get adminArchivesVide => 'No archived reports.';
-
-  @override
-  String get adminArchivesRecherche => 'Email, username, content, date…';
-
-  @override
-  String get adminArchivesApprouve => 'Approved';
-
-  @override
-  String get adminArchivesRestreint => 'Restricted';
-
-  @override
-  String adminArchivesDecisionLe(String date) {
-    return 'Decided on $date';
-  }
-
-  @override
-  String adminArchivesPublieLe(String date) {
-    return 'Published on $date';
-  }
 
   @override
   String get signalementSignaler => 'Report';
